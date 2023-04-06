@@ -6,17 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --ignore-path .gitignore",
+    "lint:fix": "next lint --ignore-path .gitignore --fix",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css,scss}'"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
+    "framer-motion": "^10.10.0",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.3"
+  },
+  "devDependencies": {
+    "@tsconfig/next": "^1.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-typescript-sort-keys": "^2.3.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.8.7"
   }
 }

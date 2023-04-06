@@ -1,0 +1,12 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode", //フォーマットはprettierでする
+  "editor.formatOnSave": true, //ファイルを保存したタイミングでフォーマットする
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true //保存するたびにESLint実行
+  },
+  //↓VSCodeデフォルトのフォーマットは無効
+  "css.validate": false,
+  "scss.validate": false,
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false
+}

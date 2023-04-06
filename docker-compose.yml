@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  client:
+    image: utsubo-site-client
+    container_name: utsubo-site-client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh -c "npm run dev"
+    ports:
+      - '3001:3001'
+    volumes:
+      - '.:/usr/src/app'
+    tty: true
+    stdin_open: true

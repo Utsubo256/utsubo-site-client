@@ -1,7 +1,16 @@
 import { Box, Button, Center, Container, Divider, HStack, Heading, Stack, Text } from '@chakra-ui/react';
 import { FcGoogle } from 'react-icons/fc';
 
+import useFirebaseAuth from '@/hooks/useFirebaseAuth';
+
 export default function SigninPage() {
+  const { loginWithGoogle, currentUser, logout } = useFirebaseAuth();
+
+  const handleLogin = async () => {
+    const user = await loginWithGoogle();
+    const token = await user?.getIdToken();
+  };
+
   return (
     <Container maxW="lg" px={{ base: '0', sm: '8' }} py={{ base: '12', md: '24' }}>
       <Stack spacing="6">
@@ -27,11 +36,17 @@ export default function SigninPage() {
             </Text>
             <Divider />
           </HStack>
-          <Button leftIcon={<FcGoogle />} maxW={'md'} variant={'outline'} w={'full'}>
+          <Button leftIcon={<FcGoogle />} maxW={'md'} onClick={() => handleLogin()} variant={'outline'} w={'full'}>
             <Center>
               <Text>Googleでログイン / ユーザー登録</Text>
             </Center>
           </Button>
+          <Button leftIcon={<FcGoogle />} maxW={'md'} onClick={() => logout()} variant={'outline'} w={'full'}>
+            <Center>
+              <Text>ログアウト</Text>
+            </Center>
+          </Button>
+          <p>ユーザー：{currentUser?.displayName}</p>
         </Stack>
       </Box>
     </Container>

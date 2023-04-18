@@ -1,4 +1,5 @@
 import { Box, Button, Center, Container, Divider, HStack, Heading, Stack, Text } from '@chakra-ui/react';
+import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
 
 import useFirebaseAuth from '@/hooks/useFirebaseAuth';
@@ -9,6 +10,13 @@ export default function SigninPage() {
   const handleLogin = async () => {
     const user = await loginWithGoogle();
     const token = await user?.getIdToken();
+
+    const config = {
+      headers: { authorization: `Bearer ${token}` },
+    };
+
+    const res = await axios.post('http://localhost:3000/api/v1/auth', null, config);
+    console.log(res);
   };
 
   return (

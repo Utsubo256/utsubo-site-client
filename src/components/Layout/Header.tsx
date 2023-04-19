@@ -15,8 +15,9 @@ import {
   useColorModeValue,
   Stack,
   Text,
+  Link,
 } from '@chakra-ui/react';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { BiLogOut } from 'react-icons/bi';
 
 const navbarLinks = [
@@ -50,6 +51,7 @@ export default function Header() {
                   bg: 'gray.200',
                   textDecoration: 'none',
                 }}
+                as={NextLink}
                 color={'whiteAlpha.900'}
                 href={link.url}
                 key={link.name} // key propsはイテレータ内でどのアイテムかをReactが認識するために使われる
@@ -107,6 +109,7 @@ export default function Header() {
                   bg: 'gray.200',
                   textDecoration: 'none',
                 }}
+                as={NextLink}
                 color={'whiteAlpha.900'}
                 href={link.url}
                 key={link.name} // key propsはイテレータ内でどのアイテムかをReactが認識するために使われる

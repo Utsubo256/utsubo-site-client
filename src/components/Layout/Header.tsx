@@ -30,7 +30,7 @@ export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const name = 'Utsubo100';
   const loading = false;
-  const currentUser = true;
+  const currentUser = false;
 
   return (
     <Box bg={useColorModeValue('blue.500', 'blue.900')} px={4}>
@@ -94,7 +94,9 @@ export default function Header() {
                 </MenuList>
               </>
             ) : (
-              <p>Login</p>
+              <Button as={NextLink} href="/signin">
+                ログイン
+              </Button>
             )}
           </Menu>
         </Flex>

@@ -2,10 +2,17 @@ import { Box, Button, Center, Container, Divider, HStack, Heading, Stack, Text }
 import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
 
-import useFirebaseAuth from '@/hooks/useFirebaseAuth';
+import { useAuthContext } from '@/context/AuthContext';
+import { setUserInfoCookies } from '@/lib/manageCookies';
+
+type UserInfo = {
+  avatar: string | null;
+  name: string;
+  uid: string;
+};
 
 export default function SigninPage() {
-  const { loginWithGoogle, currentUser, logout } = useFirebaseAuth();
+  const { loginWithGoogle, updateUserInfo } = useAuthContext();
 
   const handleLogin = async () => {
     const user = await loginWithGoogle();
@@ -16,7 +23,9 @@ export default function SigninPage() {
     };
 
     const res = await axios.post('http://localhost:3000/api/v1/auth', null, config);
-    console.log(res);
+    const userInfo: UserInfo = res.data;
+    setUserInfoCookies(userInfo);
+    updateUserInfo(userInfo);
   };
 
   return (
@@ -49,12 +58,6 @@ export default function SigninPage() {
               <Text>Googleでログイン / ユーザー登録</Text>
             </Center>
           </Button>
-          <Button leftIcon={<FcGoogle />} maxW={'md'} onClick={() => logout()} variant={'outline'} w={'full'}>
-            <Center>
-              <Text>ログアウト</Text>
-            </Center>
-          </Button>
-          <p>ユーザー：{currentUser?.displayName}</p>
         </Stack>
       </Box>
     </Container>

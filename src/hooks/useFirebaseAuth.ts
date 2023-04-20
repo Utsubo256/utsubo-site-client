@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signOut, signInWithPopup, GoogleAuthProvider, onIdTokenChanged } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import nookies from 'nookies';
 
 import { auth } from '@/lib/initFirebase';
 
@@ -35,17 +36,31 @@ export default function useFirebaseAuth() {
   const nextOrObserver = async (user: User | null) => {
     if (!user) {
       setLoading(false);
+      setCurrentUser(null);
+      nookies.set(undefined, 'token', '', { path: '/' });
       return;
     }
 
     setLoading(true);
+    const token = await user.getIdToken();
     setCurrentUser(user);
+    nookies.set(undefined, 'token', token, { path: '/' });
     setLoading(false);
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, nextOrObserver);
+    const unsubscribe = onIdTokenChanged(auth, nextOrObserver);
     return unsubscribe;
+  }, []);
+
+  // 1時間毎にtokenを再取得する
+  useEffect(() => {
+    const handle = setInterval(async () => {
+      const user = auth.currentUser;
+      if (user) await user.getIdToken(true);
+    }, 60 * 60 * 1000);
+
+    return () => clearInterval(handle);
   }, []);
 
   return {

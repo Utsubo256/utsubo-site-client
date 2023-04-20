@@ -1,4 +1,4 @@
-import { nookies, setCookie, destroyCookie } from 'nookies';
+import nookies, { setCookie, destroyCookie } from 'nookies';
 
 type UserInfo = {
   avatar: string | null;

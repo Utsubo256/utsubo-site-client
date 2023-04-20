@@ -43,7 +43,9 @@ export default function Header() {
           size={'md'}
         />
         <HStack alignItems={'center'} spacing={8}>
-          <Box>Logo</Box>
+          <NextLink href="/">
+            <Box>Logo</Box>
+          </NextLink>
           <HStack as={'nav'} display={{ base: 'none', md: 'flex' }} spacing={4}>
             {navbarLinks.map((link) => (
               <Link

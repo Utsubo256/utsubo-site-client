@@ -20,6 +20,8 @@ import {
 import NextLink from 'next/link';
 import { BiLogOut } from 'react-icons/bi';
 
+import { useAuthContext } from '@/context/AuthContext';
+
 const navbarLinks = [
   { name: 'ホーム', url: '/' },
   { name: 'ウツボ一覧', url: '/morays' },
@@ -28,9 +30,7 @@ const navbarLinks = [
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const name = 'Utsubo100';
-  const loading = false;
-  const currentUser = false;
+  const { currentUser, loading, logout, userInfo } = useAuthContext();
 
   return (
     <Box bg={useColorModeValue('blue.500', 'blue.900')} px={4}>
@@ -80,7 +80,7 @@ export default function Header() {
                   <MenuItem as="a" href="#">
                     <Stack>
                       <Text>ログインユーザー</Text>
-                      <Text as="b">{name}</Text>
+                      <Text as="b">{userInfo.name}</Text>
                     </Stack>
                   </MenuItem>
                   <MenuDivider />
@@ -88,7 +88,7 @@ export default function Header() {
                     プロフィール編集
                   </MenuItem>
                   <MenuDivider />
-                  <MenuItem icon={<BiLogOut />} onClick={() => alert('logout!')}>
+                  <MenuItem icon={<BiLogOut />} onClick={() => logout()}>
                     ログアウト
                   </MenuItem>
                 </MenuList>

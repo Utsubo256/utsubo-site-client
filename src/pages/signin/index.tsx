@@ -3,6 +3,13 @@ import axios from 'axios';
 import { FcGoogle } from 'react-icons/fc';
 
 import useFirebaseAuth from '@/hooks/useFirebaseAuth';
+import { setUserInfoCookies } from '@/lib/manageCookies';
+
+type UserInfo = {
+  avatar: string | null;
+  name: string;
+  uid: string;
+};
 
 export default function SigninPage() {
   const { loginWithGoogle, currentUser, logout } = useFirebaseAuth();
@@ -16,7 +23,8 @@ export default function SigninPage() {
     };
 
     const res = await axios.post('http://localhost:3000/api/v1/auth', null, config);
-    console.log(res);
+    const userInfo: UserInfo = res.data;
+    setUserInfoCookies(userInfo);
   };
 
   return (

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { signOut, signInWithPopup, GoogleAuthProvider, onIdTokenChanged } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import nookies from 'nookies';
 
 import { auth } from '@/lib/initFirebase';
 

@@ -1,6 +1,5 @@
 import { Box, chakra, Flex, Link, Spacer, Stack, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import { CiTwitter } from 'react-icons/ci';
 
 export default function Footer() {
   return (
@@ -17,7 +16,7 @@ export default function Footer() {
             </Link>
             <p> | </p>
             <Link as={NextLink} href={'https://twitter.com/Utsubo256'} target="_blank">
-              <Box icon={<CiTwitter />}>お問い合わせ</Box>
+              <Box>お問い合わせ</Box>
             </Link>
           </Stack>
           <Box mb={2}>

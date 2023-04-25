@@ -3,8 +3,17 @@ import { useEffect, useState } from 'react';
 import { Center, Image, LinkBox, LinkOverlay, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import axios from 'axios';
 
+type Moray = {
+  avatar: string;
+  id: number;
+  max_length: number;
+  max_length_str: string;
+  name_en: string;
+  name_ja: string;
+};
+
 export default function Morays() {
-  const [morays, setMorays] = useState([]);
+  const [morays, setMorays] = useState<Moray[]>([]);
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/morays').then((res) => setMorays(res.data));

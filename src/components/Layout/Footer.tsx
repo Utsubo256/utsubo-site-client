@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 export default function Footer() {
   return (
     <chakra.footer>
-      <Flex bg="blue.500" bottom={0} direction={'column'} pos="fixed" py={2} w="full">
+      <Flex bg="blue.500" bottom={0} direction={'column'} pos="absolute" py={2} w="full">
         <Stack align="center" direction={'column'} spacing={0}>
           <Stack direction={'row'} spacing={2}>
             <Link as={NextLink} href={'/terms'}>

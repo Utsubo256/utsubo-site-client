@@ -16,6 +16,7 @@ import {
   Stack,
   Text,
   Link,
+  Image,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { BiLogOut } from 'react-icons/bi';
@@ -44,7 +45,7 @@ export default function Header() {
         />
         <HStack alignItems={'center'} spacing={8}>
           <NextLink href="/">
-            <Box>Logo</Box>
+            <Image alt="utsubo-site-logo" h="40px" src="utsubo-site-logo.png" w="160px" />
           </NextLink>
           <HStack as={'nav'} display={{ base: 'none', md: 'flex' }} spacing={4}>
             {navbarLinks.map((link) => (
@@ -71,12 +72,7 @@ export default function Header() {
             {!loading && currentUser ? (
               <>
                 <MenuButton as={Button} cursor={'pointer'} minW={0} rounded={'full'} variant={'link'}>
-                  <Avatar
-                    size={'sm'}
-                    src={
-                      'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                    }
-                  />
+                  <Avatar size={'sm'} src="default-user-icon.png" />
                 </MenuButton>
                 <MenuList>
                   <MenuItem as="a" href="#">

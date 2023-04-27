@@ -65,7 +65,6 @@ export default function Aquaria() {
                   <Stack spacing={1} textAlign="center">
                     <Image
                       alt={aquarium.name}
-                      layout={'fill'}
                       m="auto"
                       pb="8px"
                       roundedTop="lg"

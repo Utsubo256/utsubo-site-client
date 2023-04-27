@@ -37,8 +37,14 @@ export default function Morays() {
               w="230px"
             >
               <Stack spacing={1} textAlign="center">
-                <Image alt="moray_image" borderRadius="full" boxSize="160px" m="auto" src={moray.avatar} />
-                <LinkOverlay fontSize="xl" fontWeight="bold" href={`/morays/${moray.id}`}>
+                <Image
+                  alt="moray_image"
+                  borderRadius="full"
+                  boxSize="160px"
+                  m="auto"
+                  src={`moray_image/${moray.avatar}`}
+                />
+                <LinkOverlay fontSize="xl" fontWeight="bold" href={`morays/${moray.id}`}>
                   {moray.name_ja}
                 </LinkOverlay>
                 <Text>{moray.name_en}</Text>

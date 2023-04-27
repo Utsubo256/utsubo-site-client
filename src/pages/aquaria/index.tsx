@@ -4,12 +4,11 @@ import { Center, Image, LinkBox, LinkOverlay, Stack, Text, Wrap, WrapItem } from
 import axios from 'axios';
 
 type Aquarium = {
-  avatar: string;
+  address_city: string;
   id: number;
-  max_length: number;
-  max_length_str: string;
-  name_en: string;
-  name_ja: string;
+  image: string;
+  name: string;
+  region: string;
 };
 
 export default function Aquaria() {

@@ -29,13 +29,13 @@ export default function LP() {
         <VStack>
           <Text
             color="whiteAlpha.900"
-            fontSize={{ lg: '6xl', md: '5xl', sm: '4xl' }}
+            fontSize={{ base: '2xl', lg: '6xl', md: '5xl', sm: '3xl' }}
             mt="50px"
             textShadow="1px 1px 5px gray"
           >
             ウツボを知って、観に行こう。
           </Text>
-          <Text color="whiteAlpha.900" fontSize={{ lg: '4xl', md: '3xl', sm: '2xl' }} textShadow="1px 1px 5px gray">
+          <Text color="whiteAlpha.900" fontSize={{ base: '2xl', lg: '4xl', md: '3xl' }} textShadow="1px 1px 5px gray">
             あなたもウツボがもっと好きになる
           </Text>
         </VStack>

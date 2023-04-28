@@ -26,7 +26,7 @@ import { useAuthContext } from '@/context/AuthContext';
 const navbarLinks = [
   { name: 'ホーム', url: '/' },
   { name: 'ウツボ一覧', url: '/morays' },
-  { name: '水族館一覧', url: '/aquariums' },
+  { name: '水族館一覧', url: '/aquaria' },
 ];
 
 export default function Header() {

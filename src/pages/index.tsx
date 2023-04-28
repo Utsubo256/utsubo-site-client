@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export default function LP() {
   const router = useRouter();
 
-  const gotomorays = async (path) => {
+  const goToEachPages = async (path: string) => {
     router.push(path);
     console.log(path);
   };
@@ -51,7 +51,7 @@ export default function LP() {
                   bg="blue.500"
                   color="whiteAlpha.900"
                   mt="8px"
-                  onClick={() => gotomorays('/morays')}
+                  onClick={() => goToEachPages('/morays')}
                   rounded={'full'}
                   w="100px"
                 >
@@ -69,7 +69,7 @@ export default function LP() {
                   bg="blue.500"
                   color="whiteAlpha.900"
                   mt="8px"
-                  onClick={() => gotomorays('/aquaria')}
+                  onClick={() => goToEachPages('/aquaria')}
                   rounded={'full'}
                   w="100px"
                 >

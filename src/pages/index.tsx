@@ -40,7 +40,7 @@ export default function LP() {
           </Text>
         </VStack>
       </Box>
-      <Box alignItems="center" display="flex" h="calc(100vh - 61px)" justifyContent="center">
+      <Box alignItems="center" display="flex" justifyContent="center" minH="calc(100vh - 61px)">
         <VStack>
           <Text fontSize={{ base: '3xl', lg: '3xl' }}>このサイトでできること</Text>
           <Divider borderColor="black" />

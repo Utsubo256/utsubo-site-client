@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Center, Image, LinkBox, LinkOverlay, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import axios from 'axios';
+import Head from 'next/head';
 
 type Aquarium = {
   address_city: string;
@@ -42,6 +43,9 @@ export default function Aquaria() {
 
   return (
     <>
+      <Head>
+        <title>水族館一覧 - うつぼさいと</title>
+      </Head>
       <Center py="25px">
         <Text fontSize="3xl">水族館一覧</Text>
       </Center>

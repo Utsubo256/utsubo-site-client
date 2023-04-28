@@ -1,3 +1,12 @@
+import Head from 'next/head';
+
 export default function Privacy() {
-  return <div>プライバシーポリシー</div>;
+  return (
+    <>
+      <Head>
+        <title>プライバシーポリシー - うつぼさいと</title>
+      </Head>
+      <div>プライバシーポリシー</div>
+    </>
+  );
 }

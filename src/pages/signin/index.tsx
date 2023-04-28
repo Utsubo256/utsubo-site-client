@@ -1,5 +1,6 @@
 import { Box, Button, Center, Container, Divider, HStack, Stack, Text } from '@chakra-ui/react';
 import axios from 'axios';
+import Head from 'next/head';
 import { FcGoogle } from 'react-icons/fc';
 
 import { useAuthContext } from '@/context/AuthContext';
@@ -30,6 +31,9 @@ export default function SigninPage() {
 
   return (
     <>
+      <Head>
+        <title>ログイン/ユーザー登録 - うつぼさいと</title>
+      </Head>
       <Center pt="25px">
         <Text fontSize="3xl">ログイン/ユーザー登録</Text>
       </Center>

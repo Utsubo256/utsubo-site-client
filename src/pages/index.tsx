@@ -1,4 +1,5 @@
 import { Box, Button, Center, Divider, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 export default function LP() {
@@ -11,6 +12,9 @@ export default function LP() {
 
   return (
     <>
+      <Head>
+        <title>ホーム - うつぼさいと</title>
+      </Head>
       <Box
         alignItems="center"
         bgImage="url('hero-image.jpg')"

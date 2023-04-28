@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Center, Image, LinkBox, LinkOverlay, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import axios from 'axios';
+import Head from 'next/head';
 
 type Moray = {
   avatar: string;
@@ -21,6 +22,9 @@ export default function Morays() {
 
   return (
     <>
+      <Head>
+        <title>ウツボ一覧 - うつぼさいと</title>
+      </Head>
       <Center py="25px">
         <Text fontSize="3xl">ウツボ一覧</Text>
       </Center>

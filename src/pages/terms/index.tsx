@@ -1,3 +1,12 @@
+import Head from 'next/head';
+
 export default function Terms() {
-  return <div>利用規約</div>;
+  return (
+    <>
+      <Head>
+        <title>利用規約 - うつぼさいと</title>
+      </Head>
+      <div>利用規約</div>
+    </>
+  );
 }

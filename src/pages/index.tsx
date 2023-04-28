@@ -1,4 +1,5 @@
 import { Box, Button, Center, Divider, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 export default function LP() {
@@ -11,6 +12,9 @@ export default function LP() {
 
   return (
     <>
+      <Head>
+        <title>ホーム - うつぼさいと</title>
+      </Head>
       <Box
         alignItems="center"
         bgImage="url('hero-image.jpg')"
@@ -25,18 +29,18 @@ export default function LP() {
         <VStack>
           <Text
             color="whiteAlpha.900"
-            fontSize={{ lg: '6xl', md: '5xl', sm: '4xl' }}
+            fontSize={{ base: '2xl', lg: '6xl', md: '5xl', sm: '3xl' }}
             mt="50px"
             textShadow="1px 1px 5px gray"
           >
             ウツボを知って、観に行こう。
           </Text>
-          <Text color="whiteAlpha.900" fontSize={{ lg: '4xl', md: '3xl', sm: '2xl' }} textShadow="1px 1px 5px gray">
+          <Text color="whiteAlpha.900" fontSize={{ base: '2xl', lg: '4xl', md: '3xl' }} textShadow="1px 1px 5px gray">
             あなたもウツボがもっと好きになる
           </Text>
         </VStack>
       </Box>
-      <Box alignItems="center" display="flex" h="calc(100vh - 61px)" justifyContent="center">
+      <Box alignItems="center" display="flex" justifyContent="center" minH="calc(100vh - 61px)">
         <VStack>
           <Text fontSize={{ base: '3xl', lg: '3xl' }}>このサイトでできること</Text>
           <Divider borderColor="black" />

@@ -9,7 +9,7 @@ import nookies from 'nookies';
 import { useAuthContext } from '@/context/AuthContext';
 
 type Profile = {
-  avatar: string;
+  avatar: string | null;
   id: number;
   name: string;
 };
@@ -18,7 +18,11 @@ export default function Profile() {
   const router = useRouter();
   const [profile, setProfile] = useState<Profile>({});
 
-  const { currentUser, loading } = useAuthContext();
+  const { currentUser, loading } = useAuthContext({
+    avatar: '',
+    id: 0,
+    name: '',
+  });
 
   const goToProfileEdit = async () => {
     router.push('/profile/edit');

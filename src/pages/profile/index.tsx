@@ -16,13 +16,13 @@ type Profile = {
 
 export default function Profile() {
   const router = useRouter();
-  const [profile, setProfile] = useState<Profile>({});
-
-  const { currentUser, loading } = useAuthContext({
+  const [profile, setProfile] = useState<Profile>({
     avatar: '',
     id: 0,
     name: '',
   });
+
+  const { currentUser, loading } = useAuthContext();
 
   const goToProfileEdit = async () => {
     router.push('/profile/edit');

@@ -43,7 +43,7 @@ export default function Profile() {
   return (
     <>
       <Head>
-        <title>プロフィール - うつぼさいと</title>
+        <title>マイページ - うつぼさいと</title>
       </Head>
       <Center py="25px">
         <Text fontSize="3xl">マイページ</Text>

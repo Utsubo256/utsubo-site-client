@@ -82,7 +82,7 @@ export default function Header() {
                       </Stack>
                     </MenuItem>
                     <MenuDivider />
-                    <MenuItem as="a" href="##">
+                    <MenuItem as={NextLink} href="/profile/edit">
                       プロフィール編集
                     </MenuItem>
                     <MenuDivider />

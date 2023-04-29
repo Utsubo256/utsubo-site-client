@@ -55,7 +55,7 @@ export default function Profile() {
           <Avatar size={'2xl'} src="default-user-icon.png" />
         )}
         <Text fontSize={'3xl'}>{profile?.name}</Text>
-        <Button bg="blue.500" color="whiteAlpha.900" onClick={() => goToProfileEdit('/aquaria')} rounded={'full'}>
+        <Button bg="blue.500" color="whiteAlpha.900" onClick={() => goToProfileEdit()} rounded={'full'}>
           編集する
         </Button>
       </VStack>

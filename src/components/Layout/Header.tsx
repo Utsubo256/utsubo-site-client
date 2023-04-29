@@ -75,7 +75,7 @@ export default function Header() {
                     <Avatar size={'sm'} src="default-user-icon.png" />
                   </MenuButton>
                   <MenuList>
-                    <MenuItem as="a" href="#">
+                    <MenuItem as={NextLink} href="/profile">
                       <Stack>
                         <Text>ログインユーザー</Text>
                         <Text as="b">{userInfo.name}</Text>

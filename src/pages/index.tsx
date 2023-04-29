@@ -7,7 +7,6 @@ export default function LP() {
 
   const goToEachPages = async (path: string) => {
     router.push(path);
-    console.log(path);
   };
 
   return (

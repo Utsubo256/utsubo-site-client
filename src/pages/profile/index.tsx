@@ -52,7 +52,7 @@ export default function Profile() {
         {profile?.avatar ? (
           <Avatar size={'2xl'} src={profile?.avatar} />
         ) : (
-          <Avatar size={'2xl'} src="default-user-icon.png" />
+          <Avatar size={'2xl'} src="/default-user-icon.png" />
         )}
         <Text fontSize={'3xl'}>{profile?.name}</Text>
         <Button bg="blue.500" color="whiteAlpha.900" onClick={() => goToProfileEdit()} rounded={'full'}>

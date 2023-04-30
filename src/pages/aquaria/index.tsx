@@ -72,7 +72,7 @@ export default function Aquaria() {
                       m="auto"
                       pb="8px"
                       roundedTop="lg"
-                      src={`aquarium_image/${aquarium.image}`}
+                      src={`/aquarium_image/${aquarium.image}`}
                     />
                     <LinkOverlay fontSize="lg" fontWeight="bold" href={`aquaria/${aquarium.id}`}>
                       {aquarium.name}

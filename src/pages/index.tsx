@@ -16,7 +16,7 @@ export default function LP() {
       </Head>
       <Box
         alignItems="center"
-        bgImage="url('hero-image.jpg')"
+        bgImage="url('/hero-image.jpg')"
         bgPosition="center"
         bgRepeat="no-repeat"
         bgSize="cover"

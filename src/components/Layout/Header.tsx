@@ -72,7 +72,7 @@ export default function Header() {
               {!loading && currentUser ? (
                 <>
                   <MenuButton as={Button} cursor={'pointer'} minW={0} rounded={'full'} variant={'link'}>
-                    <Avatar size={'sm'} src="/default-user-icon.png" />
+                    <Avatar size={'sm'} src={userInfo.avatar ? userInfo.avatar : '/default-user-icon.png'} />
                   </MenuButton>
                   <MenuList>
                     <MenuItem as={NextLink} href="/profile">

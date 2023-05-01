@@ -9,7 +9,7 @@ import { auth } from '@/lib/initFirebase';
 import type { User } from 'firebase/auth';
 
 export default function useFirebaseAuth() {
-  const [currentUser, setCurrentUser] = useState<User | undefined>(undefined);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -26,17 +26,17 @@ export default function useFirebaseAuth() {
   };
 
   const clear = () => {
-    setCurrentUser(undefined);
+    setCurrentUser(null);
     setLoading(false);
     router.push('/');
   };
 
   const logout = () => signOut(auth).then(clear);
 
-  const nextOrObserver = async (user: User | undefined) => {
+  const nextOrObserver = async (user: User | null) => {
     if (!user) {
       setLoading(false);
-      setCurrentUser(undefined);
+      setCurrentUser(null);
       nookies.set(undefined, 'token', '', { path: '/' });
       return;
     }

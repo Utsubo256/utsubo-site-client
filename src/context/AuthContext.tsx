@@ -9,7 +9,6 @@ import type { User } from 'firebase/auth';
 type UserInfo = {
   avatar: string | null;
   name: string;
-  uid: string;
 };
 
 type AuthContextType = {
@@ -34,7 +33,6 @@ export function AuthContextProvider({ children }: Props) {
   const [userInfo, setUserInfo] = useState({
     avatar: cookies.avatar,
     name: cookies.name,
-    uid: cookies.uid,
   });
 
   const updateUserInfo = (newUserInfo: UserInfo) => {
@@ -42,7 +40,6 @@ export function AuthContextProvider({ children }: Props) {
       ...userInfo,
       avatar: newUserInfo.avatar || '',
       name: newUserInfo.name,
-      uid: newUserInfo.uid,
     });
   };
 

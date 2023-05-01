@@ -6,6 +6,7 @@ import {
   Button,
   Center,
   FormControl,
+  // FormErrorMessage,
   FormLabel,
   HStack,
   Input,
@@ -13,13 +14,24 @@ import {
   RadioGroup,
   Text,
 } from '@chakra-ui/react';
+// import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import nookies from 'nookies';
+// import { useForm } from 'react-hook-form';
+// import * as z from 'zod';
 
 import { useAuthContext } from '@/context/AuthContext';
 import { setUserInfoCookies } from '@/lib/manageCookies';
+
+// const schema = z.object({
+//   profile: z.object({
+//     name: z.string().min(1, '名前を入力してください'),
+//   }),
+// });
+
+// type Schema = z.infer<typeof schema>;
 
 type Profile = {
   avatar: string | null;
@@ -27,6 +39,14 @@ type Profile = {
 };
 
 export default function ProfileEdit() {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm<Schema>({
+  //   resolver: zodResolver(schema),
+  // });
+
   const router = useRouter();
   const [profile, setProfile] = useState<Profile>({
     avatar: '',
@@ -71,6 +91,7 @@ export default function ProfileEdit() {
     const config = {
       headers: { authorization: `Bearer ${cookies.token}` },
     };
+
     if (!loading && !currentUser) {
       router.push('/signin');
     } else {
@@ -87,6 +108,7 @@ export default function ProfileEdit() {
         <Text fontSize="3xl">プロフィール編集</Text>
       </Center>
       <Center>
+        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
         <form onSubmit={onSubmit}>
           <Box w="lg">
             <FormControl>
@@ -115,16 +137,21 @@ export default function ProfileEdit() {
                 )}
               </HStack>
             </FormControl>
-            <FormControl>
-              <FormLabel fontSize={'xl'} mt={5}>
+            {/* <FormControl id="name" isInvalid={!!errors.profile?.name}> */}
+            <FormControl id="name">
+              <FormLabel fontSize={'xl'} htmlFor="name" mt={5}>
                 ユーザー名
               </FormLabel>
               <Input
                 bg="whiteAlpha.900"
+                // error={errors.profile?.name}
+                id="name"
                 onChange={(e) => setProfile({ ...profile, name: e.target.value })}
                 type="text"
                 value={profile.name}
+                // {...register('profile.name')}
               />
+              {/* <FormErrorMessage>{errors.profile?.name.message && errors.profile?.name.message}</FormErrorMessage> */}
             </FormControl>
             <Center mt={8}>
               <HStack spacing={100}>

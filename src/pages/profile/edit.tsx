@@ -23,7 +23,6 @@ import { setUserInfoCookies } from '@/lib/manageCookies';
 
 type Profile = {
   avatar: string | null;
-  id: number;
   name: string;
 };
 

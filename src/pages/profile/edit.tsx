@@ -22,7 +22,7 @@ import { useAuthContext } from '@/context/AuthContext';
 import { setUserInfoCookies } from '@/lib/manageCookies';
 
 type Profile = {
-  avatar: string | null;
+  avatar: string | null | undefined;
   name: string;
 };
 

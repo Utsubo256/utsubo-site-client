@@ -45,7 +45,7 @@ export default function Header() {
           />
           <HStack alignItems={'center'} spacing={8}>
             <NextLink href="/">
-              <Image alt="utsubo-site-logo" h="40px" src="utsubo-site-logo.png" w="160px" />
+              <Image alt="utsubo-site-logo" h="40px" src="/utsubo-site-logo.png" w="160px" />
             </NextLink>
             <HStack as={'nav'} display={{ base: 'none', md: 'flex' }} spacing={4}>
               {navbarLinks.map((link) => (
@@ -72,7 +72,7 @@ export default function Header() {
               {!loading && currentUser ? (
                 <>
                   <MenuButton as={Button} cursor={'pointer'} minW={0} rounded={'full'} variant={'link'}>
-                    <Avatar size={'sm'} src="default-user-icon.png" />
+                    <Avatar size={'sm'} src={userInfo.avatar ? userInfo.avatar : '/default-user-icon.png'} />
                   </MenuButton>
                   <MenuList>
                     <MenuItem as={NextLink} href="/profile">
@@ -82,7 +82,7 @@ export default function Header() {
                       </Stack>
                     </MenuItem>
                     <MenuDivider />
-                    <MenuItem as="a" href="##">
+                    <MenuItem as={NextLink} href="/profile/edit">
                       プロフィール編集
                     </MenuItem>
                     <MenuDivider />

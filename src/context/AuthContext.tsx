@@ -7,7 +7,7 @@ import useFirebaseAuth from '@/hooks/useFirebaseAuth';
 import type { User } from 'firebase/auth';
 
 type UserInfo = {
-  avatar: string | null | undefined;
+  avatar: string | null;
   name: string;
   uid: string;
 };

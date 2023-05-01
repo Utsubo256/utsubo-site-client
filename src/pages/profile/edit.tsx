@@ -62,7 +62,7 @@ export default function ProfileEdit() {
     if (value === 'default') {
       setProfile({ ...profile, avatar: null });
     } else {
-      setProfile({ ...profile, avatar: currentUser.photoURL ?? null });
+      setProfile({ ...profile, avatar: currentUser?.photoURL ?? null });
     }
   }
 

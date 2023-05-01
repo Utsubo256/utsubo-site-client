@@ -9,7 +9,7 @@ import { auth } from '@/lib/initFirebase';
 import type { User } from 'firebase/auth';
 
 export default function useFirebaseAuth() {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | undefined>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 

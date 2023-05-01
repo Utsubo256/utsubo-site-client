@@ -12,7 +12,7 @@ type UserInfo = {
 };
 
 type AuthContextType = {
-  currentUser: User | undefined;
+  currentUser: User | null;
   loading: boolean;
   loginWithGoogle: () => Promise<User | undefined>;
   logout: () => Promise<void>;

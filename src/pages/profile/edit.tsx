@@ -93,7 +93,7 @@ export default function ProfileEdit() {
               <FormLabel fontSize={'xl'}>アイコン画像</FormLabel>
               <HStack pt={3}>
                 {profile?.avatar ? (
-                  <Avatar size={'xl'} src={currentUser?.photoURL} />
+                  <Avatar size={'xl'} src={currentUser?.photoURL ?? undefined} />
                 ) : (
                   <Avatar size={'xl'} src="/default-user-icon.png" />
                 )}

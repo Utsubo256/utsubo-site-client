@@ -5,8 +5,16 @@ import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+type Aquarium = {
+  address_city: string;
+  id: number;
+  image: string;
+  name: string;
+  region: string;
+};
+
 type Moray = {
-  aquaria: [];
+  aquaria: Aquarium[];
   avatar: string;
   description: string;
   distribution: string;

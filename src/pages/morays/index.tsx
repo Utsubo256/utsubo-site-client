@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Center, Image, LinkBox, LinkOverlay, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import axios from 'axios';
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 type Moray = {
   avatar: string;
@@ -48,7 +49,7 @@ export default function Morays() {
                   m="auto"
                   src={`/moray_image/${moray.avatar}`}
                 />
-                <LinkOverlay fontSize="xl" fontWeight="bold" href={`morays/${moray.id}`}>
+                <LinkOverlay as={NextLink} fontSize="xl" fontWeight="bold" href={`morays/${moray.id}`}>
                   {moray.name_ja}
                 </LinkOverlay>
                 <Text>{moray.name_en}</Text>

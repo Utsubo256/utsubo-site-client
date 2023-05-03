@@ -21,9 +21,7 @@ export default function Privacy() {
           <Text fontSize={'xl'} fontWeight="bold">
             第1条（収集する利用者情報）
           </Text>
-          <Text pt={2} spacing={2}>
-            本サービスは、ユーザーから以下の情報を取得します。
-          </Text>
+          <Text pt={2}>本サービスは、ユーザーから以下の情報を取得します。</Text>
           <UnorderedList pl={5} pt={2}>
             <ListItem>ユーザーネーム</ListItem>
             <ListItem>メールアドレス</ListItem>
@@ -37,9 +35,7 @@ export default function Privacy() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第2条（利用目的）
           </Text>
-          <Text pt={2} spacing={2}>
-            本サービスのサービス提供にかかわる利用者情報の具体的な利用目的は以下のとおりです。
-          </Text>
+          <Text pt={2}>本サービスのサービス提供にかかわる利用者情報の具体的な利用目的は以下のとおりです。</Text>
           <UnorderedList pl={5} pt={2}>
             <ListItem>本サービスに関する登録の受付、本人確認、ユーザー認証、ユーザー設定の記録</ListItem>
             <ListItem>ユーザーの本サービスの利用履歴を管理するため</ListItem>
@@ -55,14 +51,14 @@ export default function Privacy() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第3条（安全管理のために講じた措置）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             管理者が、ユーザーから取得した情報に関して安全管理のために講じた措置につきましては、末尾記載のお問い合わせ先にご連絡をいただきましたら、法令の定めに従い個別にご回答させていただきます。
           </Text>
 
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第4条（第三者提供）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             管理者は、利用者情報のうち、個人情報については、あらかじめユーザーの同意を得ないで、第三者（日本国外にある者を含みます。）に提供しません。但し、次に掲げる必要があり第三者（日本国外にある者を含みます。）に提供する場合はこの限りではありません。
           </Text>
           <UnorderedList pl={5} pt={2}>
@@ -81,7 +77,7 @@ export default function Privacy() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第5条（アクセス解析ツール）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             管理者は、ユーザーのアクセス解析のために、「Googleアナリティクス」を利用しています。
             Googleアナリティクスは、トラフィックデータの収集のためにCookieを使用しています。トラフィックデータは匿名で収集されており、個人を特定するものではありません。Cookieを無効にすれば、これらの情報の収集を拒否することができます。
             詳しくはお使いのブラウザの設定をご確認ください。 Googleアナリティクスについて、詳しくは
@@ -99,14 +95,14 @@ export default function Privacy() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第6条（プライバシーポリシーの変更）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             管理者は、必要に応じて、このプライバシーポリシーの内容を変更します。この場合、変更後のプライバシーポリシーの施行時期と内容を適切な方法により周知または通知します。
           </Text>
 
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第7条（お問い合わせ窓口）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             ご意見、ご質問、苦情のお申出その他利用者情報の取扱いに関するお問い合わせは、管理者TwitterアカウントのDMにてご連絡ください。
           </Text>
 

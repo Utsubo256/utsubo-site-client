@@ -69,7 +69,7 @@ export default function Terms() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第4条（禁止事項）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             登録ユーザーは、本サービスの利用にあたり、以下の各号のいずれかに該当する行為または該当すると管理者が判断する行為をしてはなりません。
           </Text>
           <OrderedList pt={2} spacing={2}>
@@ -177,9 +177,7 @@ export default function Terms() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第8条（退会）
           </Text>
-          <Text pt={2} spacing={2}>
-            登録ユーザーは、管理者の定める退会手続により、本サービスから退会できるものとします。
-          </Text>
+          <Text pt={2}>登録ユーザーは、管理者の定める退会手続により、本サービスから退会できるものとします。</Text>
 
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第9条（本サービスの内容の変更、終了）
@@ -210,14 +208,14 @@ export default function Terms() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第11条（秘密保持）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             登録ユーザーは、本サービスに関連して管理者が登録ユーザーに対して秘密に取扱うことを求めて開示した非公知の情報について、管理者の事前の書面による承諾がある場合を除き、秘密に取扱うものとします。
           </Text>
 
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第12条（利用者情報の取扱い）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             管理者による登録ユーザーの利用者情報の取扱いについては、別途本サービスのプライバシーポリシーの定めによるものとし、登録ユーザーはこのプライバシーポリシーに従って管理者が登録ユーザーの利用者情報を取扱うことについて同意するものとします。
           </Text>
 
@@ -258,7 +256,7 @@ export default function Terms() {
           <Text fontSize={'xl'} fontWeight="bold" pt="20px">
             第16条（分離可能性）
           </Text>
-          <Text pt={2} spacing={2}>
+          <Text pt={2}>
             本規約のいずれかの条項またはその一部が、消費者契約法その他の法令等により無効または執行不能と判断された場合であっても、本規約の残りの規定及び一部が無効または執行不能と判断された規定の残りの部分は、継続して完全に効力を有するものとします。
           </Text>
 

@@ -49,7 +49,7 @@ export default function Morays() {
                   m="auto"
                   src={`/moray_image/${moray.avatar}`}
                 />
-                <LinkOverlay as={NextLink} fontSize="xl" fontWeight="bold" href={`morays/${moray.id}`}>
+                <LinkOverlay as={NextLink} fontSize="xl" fontWeight="bold" href={`/morays/${moray.id}`}>
                   {moray.name_ja}
                 </LinkOverlay>
                 <Text>{moray.name_en}</Text>

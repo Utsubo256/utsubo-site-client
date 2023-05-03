@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Center, Image, LinkBox, LinkOverlay, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import axios from 'axios';
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 type Aquarium = {
   address_city: string;
@@ -74,7 +75,7 @@ export default function Aquaria() {
                       roundedTop="lg"
                       src={`/aquarium_image/${aquarium.image}`}
                     />
-                    <LinkOverlay fontSize="lg" fontWeight="bold" href={`aquaria/${aquarium.id}`}>
+                    <LinkOverlay as={NextLink} fontSize="lg" fontWeight="bold" href={`/aquaria/${aquarium.id}`}>
                       {aquarium.name}
                     </LinkOverlay>
                     <Text>{aquarium.address_city}</Text>

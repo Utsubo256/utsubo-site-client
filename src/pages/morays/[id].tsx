@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Box, Center, Image, LinkBox, LinkOverlay, Stack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import axios from 'axios';
 import Head from 'next/head';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
 type Aquarium = {
@@ -26,7 +27,7 @@ type Moray = {
   video_url: string;
 };
 
-export default function Morays() {
+export default function MorayDetail() {
   const router = useRouter();
   const { id } = router.query;
 
@@ -89,7 +90,7 @@ export default function Morays() {
                   roundedTop="lg"
                   src={`/aquarium_image/${aquarium.image}`}
                 />
-                <LinkOverlay fontSize="lg" fontWeight="bold" href={`/aquaria/${aquarium.id}`}>
+                <LinkOverlay as={NextLink} fontSize="lg" fontWeight="bold" href={`/aquaria/${aquarium.id}`}>
                   {aquarium.name}
                 </LinkOverlay>
                 <Text>{aquarium.address_city}</Text>

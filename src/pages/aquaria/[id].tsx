@@ -66,7 +66,8 @@ export default function AquariumDetail() {
           src={`/aquarium_image/${aquariumDetail.image}`}
           w="300px"
         />
-        <Box w={{ lg: '40%', md: '50%', sm: '70%' }}>
+        {/* <Box w={{ lg: '50%', md: '60%', sm: '70%' }}> */}
+        <Box>
           <Text fontSize={'xl'}>
             サイト　:{' '}
             <Link as={NextLink} color="blue.400" href={aquariumDetail.site_url} isExternal>
@@ -86,12 +87,21 @@ export default function AquariumDetail() {
             </Link>
           </Text>
           <Text fontSize={'xl'}>住所　　: {aquariumDetail.address_detail}</Text>
-          <Text fontSize={'xl'}>一言メモ: {aquariumDetail.description}</Text>
         </Box>
+        <VStack pt="20px" w={{ lg: '35%', md: '45%', sm: '70%' }}>
+          <Text fontSize={'2xl'}>ひとことメモ</Text>
+          <Text fontSize={'xl'}>{aquariumDetail.description ?? '調査中です！しばらくお待ちください。'}</Text>
+        </VStack>
       </VStack>
-      <Center py="25px">
+      <VStack py="25px" spacing={0}>
         <Text fontSize="3xl">この水族館で観られるウツボ</Text>
-      </Center>
+        <Text color="red.500" fontSize="md">
+          ※ご注意※
+        </Text>
+        <Text color="red.500" fontSize="md">
+          展示されるウツボは通知無く変更される場合があります。
+        </Text>
+      </VStack>
       <Wrap justify="center" pb={8} spacing={8}>
         {aquariumDetail.morays.map((moray) => (
           <WrapItem key={moray.id} mx="auto">
@@ -122,29 +132,6 @@ export default function AquariumDetail() {
           </WrapItem>
         ))}
       </Wrap>
-      {/* <Wrap justify="center" pb={8} spacing={8}>
-        {aquariumDetail.morays.map((moray) => (
-          <WrapItem key={moray.id} mx="auto">
-            <LinkBox
-              _hover={{ cursor: 'pointer', opacity: 0.8 }}
-              bg="whiteAlpha.800"
-              borderRadius="30px"
-              h="250px"
-              rounded="lg"
-              shadow="lg"
-              w="300px"
-            >
-              <Stack spacing={1} textAlign="center">
-                <Image alt={moray.name_en} m="auto" pb="8px" roundedTop="lg" src={`/aquarium_image/${moray.avatar}`} />
-                <LinkOverlay fontSize="lg" fontWeight="bold" href={`/aquaria/${moray.id}`}>
-                  {moray.name_ja}
-                </LinkOverlay>
-                <Text>{aquarium.address_city}</Text>
-              </Stack>
-            </LinkBox>
-          </WrapItem>
-        ))}
-      </Wrap> */}
     </>
   );
 }

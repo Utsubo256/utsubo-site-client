@@ -34,7 +34,7 @@ export default function Header() {
 
   return (
     <>
-      <Box bg="blue.500" h="64px" position="fixed" px={4} w={'full'} zIndex={100}>
+      <Box bg="blue.500" position="fixed" px={4} w={'full'} zIndex={100}>
         <Flex alignItems={'center'} h={16} justifyContent={'space-between'}>
           <IconButton
             aria-label={'Open Menu'}
@@ -51,7 +51,7 @@ export default function Header() {
               {navbarLinks.map((link) => (
                 <Link
                   _hover={{
-                    bg: 'gray.200',
+                    bg: 'blue.300',
                     textDecoration: 'none',
                   }}
                   as={NextLink}
@@ -106,7 +106,7 @@ export default function Header() {
               {navbarLinks.map((link) => (
                 <Link
                   _hover={{
-                    bg: 'gray.200',
+                    bg: 'blue.300',
                     textDecoration: 'none',
                   }}
                   as={NextLink}

@@ -1,4 +1,5 @@
-import { Box, Button, Center, Container, Divider, HStack, Stack, Text } from '@chakra-ui/react';
+import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { Box, Button, Center, Divider, HStack, Stack, Text, Tooltip, VStack } from '@chakra-ui/react';
 import axios from 'axios';
 import Head from 'next/head';
 import { FcGoogle } from 'react-icons/fc';
@@ -37,18 +38,39 @@ export default function SigninPage() {
       <Center pt="25px">
         <Text fontSize="3xl">ログイン/ユーザー登録</Text>
       </Center>
-      <Container maxW="lg" px={{ base: '0', sm: '8' }} py={12}>
+      <Box alignItems="center" display="flex" justifyContent="center" minH="calc(100vh - 64px - 70px - 61px)">
         <Box
           bg="whiteAlpha.900"
           borderRadius={{ base: 'none', sm: 'xl' }}
           boxShadow={{ base: 'none', sm: 'md' }}
-          px={{ base: '4', sm: '10' }}
-          py={{ base: '0', sm: '8' }}
+          px={20}
+          py={10}
         >
-          <Stack spacing="6">
-            <Button maxW={'md'} variant={'outline'} w={'full'}>
-              ゲストログイン
-            </Button>
+          <Stack spacing="8">
+            <VStack>
+              <Button maxW={'md'} variant={'outline'} w={'full'}>
+                ゲストログイン
+              </Button>
+              <Tooltip
+                aria-label="ゲストログインとは"
+                bg="white"
+                borderRadius="md"
+                color="blue.500"
+                h="120px"
+                label={
+                  <VStack alignItems="center" display="flex" justifyContent="center">
+                    <Text fontSize={'md'}>仮アカウントを作成し、ユーザー登録なしでログインできます。</Text>
+                    <Text fontSize={'md'}>ログアウト後に同じアカウントでの再ログインはできません。</Text>
+                  </VStack>
+                }
+                w="400px"
+              >
+                <HStack textDecoration="underline">
+                  <InfoOutlineIcon />
+                  <Text fontSize={'sm'}>ゲストログインとは？</Text>
+                </HStack>
+              </Tooltip>
+            </VStack>
             <HStack>
               <Divider />
               <Text color="muted" fontSize="sm" whiteSpace="nowrap">
@@ -63,7 +85,7 @@ export default function SigninPage() {
             </Button>
           </Stack>
         </Box>
-      </Container>
+      </Box>
     </>
   );
 }

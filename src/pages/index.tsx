@@ -1,4 +1,4 @@
-import { Box, Button, Center, Divider, SimpleGrid, Stack, Text, VStack } from '@chakra-ui/react';
+import { Box, Button, Center, Divider, SimpleGrid, Stack, Text, VStack, Image } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -39,18 +39,34 @@ export default function LP() {
           </Text>
         </VStack>
       </Box>
-      <Box alignItems="center" display="flex" justifyContent="center" minH="calc(100vh - 61px)">
-        <VStack>
-          <Text fontSize={{ base: '3xl', lg: '3xl' }}>このサイトでできること</Text>
+      <Box display="flex" justifyContent="center" minH="calc(100vh - 61px)">
+        <VStack pb={8}>
+          <Box h="64px"></Box>
+          <Center pt="35px">
+            <Text fontSize="3xl">このサイトでできること</Text>
+          </Center>
           <Divider borderColor="black" />
           <SimpleGrid columns={{ base: 1, md: 2 }} pt={8} spacing={100} textAlign="center">
             <Stack>
-              <Text fontSize="2xl">ウツボを知る</Text>
-              <Text>どんなウツボがいるの？</Text>
-              <Text>生息地はどこ？</Text>
-              <Text>そんな疑問に答えます。</Text>
+              <Text fontSize={'2xl'}>ウツボを知る</Text>
+              <Text>ウツボといっても、縞模様や斑点があったり、</Text>
+              <Text>鮮やかな色をしていたり…様々な特徴を持っています。</Text>
+              <Text>そんなウツボたちをイラスト付きでご紹介します。</Text>
+              <Center>
+                <Image
+                  alt="moray_image"
+                  borderRadius="full"
+                  h="200px"
+                  m="auto"
+                  src={'moray_image/kidako-moray.png'}
+                  w="200px"
+                />
+              </Center>
               <Center>
                 <Button
+                  _hover={{
+                    bg: 'blue.300',
+                  }}
                   bg="blue.500"
                   color="whiteAlpha.900"
                   mt="8px"
@@ -64,11 +80,21 @@ export default function LP() {
             </Stack>
             <Stack>
               <Text fontSize="2xl">ウツボを観に行く</Text>
-              <Text>日本全国にある</Text>
-              <Text>ウツボがいる水族館を</Text>
-              <Text>ご紹介します。</Text>
+              <Text>ウツボを知った後は、早速観に行きましょう！</Text>
+              <Text>こちらのページでは、日本全国の</Text>
+              <Text>ウツボがいる水族館をご紹介します。</Text>
+              <Image
+                alt="aquarium_image"
+                borderRadius="10px"
+                h="200px"
+                m="auto"
+                src={'/aquarium_image/lp-aquarium.jpg'}
+              />
               <Center>
                 <Button
+                  _hover={{
+                    bg: 'blue.300',
+                  }}
                   bg="blue.500"
                   color="whiteAlpha.900"
                   mt="8px"

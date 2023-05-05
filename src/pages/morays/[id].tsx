@@ -57,19 +57,30 @@ export default function MorayDetail() {
       <Center py="25px">
         <Text fontSize="3xl">{morayDetail.name_ja}</Text>
       </Center>
+
       <VStack>
         <Image alt="moray_image" borderRadius="full" boxSize="200px" src={`/moray_image/${morayDetail.avatar}`} />
-        <Box w={{ lg: '20%', md: '50%', sm: '70%' }}>
-          <Text fontSize={'2xl'}>英名: {morayDetail.name_en}</Text>
-          <Text fontSize={'2xl'}>学名: {morayDetail.name_academic}</Text>
-          <Text fontSize={'2xl'}>最大長: {morayDetail.max_length_str}</Text>
-          <Text fontSize={'2xl'}>分布: {morayDetail.distribution}</Text>
-          <Text fontSize={'2xl'}>一言メモ: {morayDetail.description}</Text>
+        <Box pt="25px">
+          <Text fontSize={'xl'}>{`英名　: ${morayDetail.name_en ?? '???'}`}</Text>
+          <Text fontSize={'xl'}>{`学名　: ${morayDetail.name_academic ?? '???'}`}</Text>
+          {/* <Text fontSize={'xl'}>分布: {morayDetail.distribution}</Text> */}
+          <Text fontSize={'xl'}>{`最大長: ${morayDetail.max_length_str ?? '???cm'}`}</Text>
         </Box>
+        <VStack pt="20px" w={{ lg: '35%', md: '45%', sm: '70%' }}>
+          <Text fontSize={'2xl'}>ひとことメモ</Text>
+          <Text fontSize={'xl'}>{morayDetail.description ?? '調査中です！しばらくお待ちください。'}</Text>
+        </VStack>
       </VStack>
-      <Center py="25px">
+
+      <VStack py="25px" spacing={0}>
         <Text fontSize="3xl">このウツボが観られる水族館</Text>
-      </Center>
+        <Text color="red.500" fontSize="md">
+          ※ご注意※
+        </Text>
+        <Text color="red.500" fontSize="md">
+          展示されるウツボは通知無く変更される場合があります。
+        </Text>
+      </VStack>
       <Wrap justify="center" pb={8} spacing={8}>
         {morayDetail.aquaria.map((aquarium) => (
           <WrapItem key={aquarium.id} mx="auto">

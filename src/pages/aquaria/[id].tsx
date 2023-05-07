@@ -47,13 +47,14 @@ export default function AquariumDetail() {
 
   useEffect(() => {
     if (router.isReady) {
-      axios.get(`http://localhost:3000/api/v1/aquaria/${id}`).then((res) => setAquariumDetail(res.data));
+      axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria/${id}`).then((res) => setAquariumDetail(res.data));
     }
   }, [id, router]);
+
   return (
     <>
       <Head>
-        <title>{aquariumDetail.name} - うつぼさいと</title>
+        <title>{`${aquariumDetail.name} - うつぼさいと`}</title>
       </Head>
       <Center py="25px">
         <Text fontSize="3xl">{aquariumDetail.name}</Text>
@@ -66,7 +67,6 @@ export default function AquariumDetail() {
           src={`/aquarium_image/${aquariumDetail.image}`}
           w="300px"
         />
-        {/* <Box w={{ lg: '50%', md: '60%', sm: '70%' }}> */}
         <Box>
           <Text fontSize={'xl'}>
             サイト　:{' '}

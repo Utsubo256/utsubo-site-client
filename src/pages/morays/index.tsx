@@ -18,7 +18,7 @@ export default function Morays() {
   const [morays, setMorays] = useState<Moray[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/morays').then((res) => setMorays(res.data));
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/morays`).then((res) => setMorays(res.data));
   }, []);
 
   return (

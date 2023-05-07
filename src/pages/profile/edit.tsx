@@ -66,7 +66,7 @@ export default function ProfileEdit() {
       headers: { authorization: `Bearer ${cookies.token}` },
     };
 
-    axios.patch('http://localhost:3000/api/v1/profile', data, config).then((res) => {
+    axios.patch(`${process.env.NEXT_PUBLIC_BASE_URL}/profile`, data, config).then((res) => {
       setProfile(res.data);
       setUserInfoCookies(res.data);
       updateUserInfo(res.data);
@@ -95,7 +95,7 @@ export default function ProfileEdit() {
     if (!loading && !currentUser) {
       router.push('/signin');
     } else {
-      axios.get('http://localhost:3000/api/v1/profile', config).then((res) => setProfile(res.data));
+      axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/profile`, config).then((res) => setProfile(res.data));
     }
   }, [loading, currentUser, router]);
 

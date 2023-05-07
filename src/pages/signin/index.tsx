@@ -24,7 +24,7 @@ export default function SigninPage() {
       headers: { authorization: `Bearer ${token}` },
     };
 
-    const res = await axios.post('http://localhost:3000/api/v1/auth', null, config);
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth`, null, config);
     const userInfo: UserInfo = res.data;
     setUserInfoCookies(userInfo);
     updateUserInfo(userInfo);

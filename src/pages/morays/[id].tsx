@@ -46,13 +46,14 @@ export default function MorayDetail() {
 
   useEffect(() => {
     if (router.isReady) {
-      axios.get(`http://localhost:3000/api/v1/morays/${id}`).then((res) => setMorayDetail(res.data));
+      axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/morays/${id}`).then((res) => setMorayDetail(res.data));
     }
   }, [id, router]);
+
   return (
     <>
       <Head>
-        <title>{morayDetail.name_ja} - うつぼさいと</title>
+        <title>{`${morayDetail.name_ja} - うつぼさいと`}</title>
       </Head>
       <Center py="25px">
         <Text fontSize="3xl">{morayDetail.name_ja}</Text>

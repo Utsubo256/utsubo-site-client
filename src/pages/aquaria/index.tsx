@@ -17,7 +17,7 @@ export default function Aquaria() {
   const [aquaria, setAquaria] = useState<Aquarium[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/aquaria').then((res) => setAquaria(res.data));
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria`).then((res) => setAquaria(res.data));
   }, []);
 
   const aquaria_hokkaido = aquaria.filter((aquarium) => aquarium.region === '北海道');

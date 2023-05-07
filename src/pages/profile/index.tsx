@@ -36,7 +36,7 @@ export default function Profile() {
     if (!loading && !currentUser) {
       router.push('/signin');
     } else {
-      axios.get('http://localhost:3000/api/v1/profile', config).then((res) => setProfile(res.data));
+      axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/profile`, config).then((res) => setProfile(res.data));
     }
   }, [loading, currentUser, router]);
 

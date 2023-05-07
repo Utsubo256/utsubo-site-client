@@ -58,7 +58,7 @@ export default function LP() {
                   borderRadius="full"
                   h="200px"
                   m="auto"
-                  src={'moray_image/kidako-moray.png'}
+                  src={'/moray_image/kidako-moray.png'}
                   w="200px"
                 />
               </Center>

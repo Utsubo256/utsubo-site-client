@@ -14,7 +14,7 @@ type UserInfo = {
 type AuthContextType = {
   currentUser: User | null;
   loading: boolean;
-  loginWithGoogle: () => Promise<User | undefined>;
+  loginWithFirebase: (method: string) => Promise<User | undefined>;
   logout: () => Promise<void>;
   updateUserInfo: (newUserInfo: UserInfo) => void;
   userInfo: UserInfo;
@@ -29,7 +29,7 @@ const AuthCtx = createContext<AuthContextType>({} as AuthContextType);
 const cookies = parseCookies();
 
 export function AuthContextProvider({ children }: Props) {
-  const { currentUser, loading, loginWithGoogle, logout } = useFirebaseAuth();
+  const { currentUser, loading, loginWithFirebase, logout } = useFirebaseAuth();
   const [userInfo, setUserInfo] = useState({
     avatar: cookies.avatar,
     name: cookies.name,
@@ -46,7 +46,7 @@ export function AuthContextProvider({ children }: Props) {
   const AuthContext: AuthContextType = {
     currentUser: currentUser,
     loading: loading,
-    loginWithGoogle: loginWithGoogle,
+    loginWithFirebase: loginWithFirebase,
     logout: logout,
     updateUserInfo: updateUserInfo,
     userInfo: userInfo,

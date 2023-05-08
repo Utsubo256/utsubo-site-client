@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 
-import { signOut, signInWithPopup, GoogleAuthProvider, onIdTokenChanged } from 'firebase/auth';
+import { signOut, signInWithPopup, GoogleAuthProvider, onIdTokenChanged, signInAnonymously } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import nookies from 'nookies';
 
 import { auth } from '@/lib/initFirebase';
+import { clearUserInfoCookies } from '@/lib/manageCookies';
 
 import type { User } from 'firebase/auth';
 
@@ -13,10 +14,25 @@ export default function useFirebaseAuth() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const loginWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
+  const getProvider = (method: string) => {
+    switch (method) {
+      case 'google':
+        return new GoogleAuthProvider();
+      default:
+        return new GoogleAuthProvider();
+    }
+  };
 
+  const loginWithFirebase = async (method: string) => {
+    const getResult = () => {
+      if (method === 'guest') {
+        return signInAnonymously(auth);
+      } else {
+        return signInWithPopup(auth, getProvider(method));
+      }
+    };
+
+    const result = await getResult();
     if (result) {
       const user = result.user;
 
@@ -27,6 +43,7 @@ export default function useFirebaseAuth() {
 
   const clear = () => {
     setCurrentUser(null);
+    clearUserInfoCookies();
     setLoading(false);
     router.push('/');
   };
@@ -66,7 +83,7 @@ export default function useFirebaseAuth() {
   return {
     currentUser,
     loading,
-    loginWithGoogle,
+    loginWithFirebase,
     logout,
   };
 }

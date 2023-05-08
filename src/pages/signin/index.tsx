@@ -14,10 +14,10 @@ type UserInfo = {
 };
 
 export default function SigninPage() {
-  const { loginWithGoogle, updateUserInfo } = useAuthContext();
+  const { loginWithFirebase, updateUserInfo } = useAuthContext();
 
-  const handleLogin = async () => {
-    const user = await loginWithGoogle();
+  const handleLogin = async (loginMethod: string) => {
+    const user = await loginWithFirebase(loginMethod);
     const token = await user?.getIdToken();
 
     const config = {
@@ -48,7 +48,7 @@ export default function SigninPage() {
         >
           <Stack spacing="8">
             <VStack>
-              <Button maxW={'md'} variant={'outline'} w={'full'}>
+              <Button maxW={'md'} onClick={() => handleLogin('guest')} variant={'outline'} w={'full'}>
                 ゲストログイン
               </Button>
               <Tooltip
@@ -78,7 +78,13 @@ export default function SigninPage() {
               </Text>
               <Divider />
             </HStack>
-            <Button leftIcon={<FcGoogle />} maxW={'md'} onClick={() => handleLogin()} variant={'outline'} w={'full'}>
+            <Button
+              leftIcon={<FcGoogle />}
+              maxW={'md'}
+              onClick={() => handleLogin('google')}
+              variant={'outline'}
+              w={'full'}
+            >
               <Center>
                 <Text>Googleでログイン / ユーザー登録</Text>
               </Center>

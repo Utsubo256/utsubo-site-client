@@ -14,7 +14,7 @@ type UserInfo = {
 type AuthContextType = {
   currentUser: User | null;
   loading: boolean;
-  loginWithFirebase: () => Promise<User | undefined>;
+  loginWithFirebase: (method: string) => Promise<User | undefined>;
   logout: () => Promise<void>;
   updateUserInfo: (newUserInfo: UserInfo) => void;
   userInfo: UserInfo;

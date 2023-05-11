@@ -9,8 +9,8 @@ import { setUserInfoCookies } from '@/lib/manageCookies';
 
 type UserInfo = {
   avatar: string | null;
+  id: number;
   name: string;
-  uid: string;
 };
 
 export default function SigninPage() {

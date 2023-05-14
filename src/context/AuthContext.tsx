@@ -8,7 +8,7 @@ import type { User } from 'firebase/auth';
 
 type UserInfo = {
   avatar: string | null;
-  id: string;
+  id: number;
   name: string;
 };
 

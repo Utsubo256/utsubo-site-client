@@ -216,7 +216,7 @@ export default function MorayDetail() {
           <VStack pb={4}>
             <Box display="flex" w={{ base: '80%', lg: '50%', md: '70%' }}>
               <HStack>
-                <Avatar size={'md'} src={userInfo.avatar ?? undefined} />
+                <Avatar size={'md'} src={userInfo.avatar ? userInfo.avatar : '/default-user-icon.png'} />
                 <Text fontSize="md">{userInfo.name}</Text>
               </HStack>
             </Box>

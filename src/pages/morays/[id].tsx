@@ -292,7 +292,7 @@ export default function MorayDetail() {
                       <Text fontSize="xs">{elapsedTimeFromNow(morayComment.created_at)}</Text>
                     </HStack>
                     <Menu>
-                      {morayComment.user.id === parseInt(userInfo.id, 10) ? (
+                      {morayComment.user.id === Number(userInfo.id) ? (
                         <Box>
                           <MenuButton>
                             <Icon as={BsThreeDots} boxSize="20px" />

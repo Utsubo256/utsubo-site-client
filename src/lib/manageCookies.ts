@@ -7,7 +7,7 @@ type UserInfo = {
 };
 
 export const setUserInfoCookies = (userInfo: UserInfo) => {
-  setCookie(null, 'id', userInfo.id, {
+  setCookie(null, 'id', String(userInfo.id), {
     maxAge: 30 * 24 * 60 * 60,
     path: '/',
   });

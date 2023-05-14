@@ -33,7 +33,7 @@ export function AuthContextProvider({ children }: Props) {
   const { currentUser, loading, loginWithFirebase, logout } = useFirebaseAuth();
   const [userInfo, setUserInfo] = useState({
     avatar: cookies.avatar,
-    id: cookies.id,
+    id: Number(cookies.id),
     name: cookies.name,
   });
 

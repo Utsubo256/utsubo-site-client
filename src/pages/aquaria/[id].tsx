@@ -1,10 +1,39 @@
 import { useEffect, useState } from 'react';
 
-import { Box, Center, Image, Link, LinkBox, LinkOverlay, Stack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Avatar,
+  Box,
+  Button,
+  Center,
+  Divider,
+  HStack,
+  Icon,
+  Image,
+  Link,
+  LinkBox,
+  LinkOverlay,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Stack,
+  Text,
+  Textarea,
+  VStack,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react';
 import axios from 'axios';
+import { parseISO } from 'date-fns';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import ja from 'date-fns/locale/ja';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import nookies from 'nookies';
+import { BsThreeDots } from 'react-icons/bs';
+
+import { useAuthContext } from '@/context/AuthContext';
 
 type Moray = {
   avatar: string;
@@ -28,9 +57,27 @@ type Aquarium = {
   site_url: string;
 };
 
+type AquariumComments = {
+  body: string;
+  created_at: string;
+  id: number;
+  image: string | null;
+  user: {
+    avatar: string | null;
+    id: number;
+    name: string;
+  };
+};
+
+type AquariumCommentInput = {
+  body: string;
+};
+
 export default function AquariumDetail() {
   const router = useRouter();
   const { id } = router.query;
+
+  const { currentUser, loading, userInfo } = useAuthContext();
 
   const [aquariumDetail, setAquariumDetail] = useState<Aquarium>({
     address_detail: '',
@@ -45,11 +92,65 @@ export default function AquariumDetail() {
     site_url: '',
   });
 
+  const [aquariumCommentInput, setAquariumCommentInput] = useState<AquariumCommentInput>({
+    body: '',
+  });
+  const [aquariumComments, setAquariumComments] = useState<AquariumComments[]>([]);
+
+  function onSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    const data = {
+      aquarium_comment: {
+        body: aquariumCommentInput.body,
+      },
+    };
+    const cookies = nookies.get();
+    const config = {
+      headers: { authorization: `Bearer ${cookies.token}` },
+    };
+
+    if (router.isReady) {
+      axios
+        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria/${id}/aquarium_comments`, data, config)
+        .then(() => {
+          axios
+            .get(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria/${id}/aquarium_comments`)
+            .then((res) => setAquariumComments(res.data));
+        })
+        .catch((e) => console.log(e));
+    }
+    setAquariumCommentInput({ body: '' });
+  }
+
+  function onDelete(comment_id: number) {
+    if (router.isReady) {
+      const cookies = nookies.get();
+      const config = {
+        headers: { authorization: `Bearer ${cookies.token}` },
+      };
+
+      axios
+        .delete(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria/${id}/aquarium_comments/${comment_id}`, config)
+        .then(() => {
+          axios
+            .get(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria/${id}/aquarium_comments`)
+            .then((res) => setAquariumComments(res.data));
+        });
+    }
+  }
+
   useEffect(() => {
     if (router.isReady) {
       axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria/${id}`).then((res) => setAquariumDetail(res.data));
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}/aquaria/${id}/aquarium_comments`)
+        .then((res) => setAquariumComments(res.data));
     }
   }, [id, router]);
+
+  function elapsedTimeFromNow(datetime: string) {
+    return formatDistanceToNow(parseISO(datetime), { locale: ja });
+  }
 
   return (
     <>
@@ -132,6 +233,119 @@ export default function AquariumDetail() {
           </WrapItem>
         ))}
       </Wrap>
+      <VStack py="25px">
+        <Text fontSize="2xl">コメント</Text>
+      </VStack>
+      {!loading && currentUser ? (
+        <>
+          <VStack pb={4}>
+            <Box display="flex" w={{ base: '80%', lg: '50%', md: '70%' }}>
+              <HStack>
+                <Avatar size={'md'} src={userInfo.avatar ? userInfo.avatar : '/default-user-icon.png'} />
+                <Text fontSize="md">{userInfo.name}</Text>
+              </HStack>
+            </Box>
+          </VStack>
+          <VStack>
+            <Box w={{ base: '80%', lg: '50%', md: '70%' }}>
+              <form onSubmit={onSubmit}>
+                <Textarea
+                  bg="white"
+                  onChange={(e) => setAquariumCommentInput({ ...aquariumCommentInput, body: e.target.value })}
+                  placeholder="コメントを入力"
+                  value={aquariumCommentInput.body}
+                  variant="outline"
+                />
+                <Box display="flex" justifyContent="flex-end" py={2}>
+                  <Button
+                    _hover={{ bg: 'blue.300' }}
+                    bg="blue.500"
+                    color="whiteAlpha.900"
+                    isDisabled={aquariumCommentInput.body === '' || aquariumCommentInput.body?.length > 255}
+                    type="submit"
+                  >
+                    投稿する
+                  </Button>
+                </Box>
+                <Divider borderColor="gray.400" />
+              </form>
+            </Box>
+          </VStack>
+        </>
+      ) : (
+        <VStack>
+          <Box
+            alignItems="center"
+            bg="whiteAlpha.800"
+            borderRadius="30px"
+            display="flex"
+            h="200px"
+            justifyContent="center"
+            rounded="lg"
+            shadow="lg"
+            w={{ base: '80%', lg: '50%', md: '70%' }}
+          >
+            <VStack>
+              <Text fontSize="lg" fontWeight="bold">
+                ログインしてコメントを投稿しよう！
+              </Text>
+              <Text fontSize="sm" w={{ lg: '100%', md: '100%', sm: '75%' }}>
+                ゲストログインするとアカウント登録なしでコメント投稿ができます
+              </Text>
+              <Box h={4}></Box>
+              <Button _hover={{ bg: 'blue.300' }} as={NextLink} bg="blue.500" color="whiteAlpha.900" href="/signin">
+                ログインする
+              </Button>
+            </VStack>
+          </Box>
+        </VStack>
+      )}
+      {aquariumComments.length ? (
+        <VStack pb={8}>
+          <Box w={{ base: '80%', lg: '50%', md: '70%' }}>
+            {aquariumComments.map((aquariumComment) => (
+              <>
+                <Box py={4}>
+                  <Box display="flex" justifyContent="space-between">
+                    <HStack spacing={2}>
+                      {aquariumComment.user.avatar ? (
+                        <Avatar size={'md'} src={aquariumComment.user.avatar ?? undefined} />
+                      ) : (
+                        <Avatar size={'md'} src="/default-user-icon.png" />
+                      )}
+                      <Text fontSize="md">{aquariumComment.user.name}</Text>
+                      <Text fontSize="xs">{elapsedTimeFromNow(aquariumComment.created_at)}</Text>
+                    </HStack>
+                    <Menu>
+                      {aquariumComment.user.id === Number(userInfo.id) ? (
+                        <Box>
+                          <MenuButton>
+                            <Icon as={BsThreeDots} boxSize="20px" />
+                          </MenuButton>
+                          <MenuList>
+                            {/* <MenuItem onClick={() => alert('updated!')}>編集する</MenuItem> */}
+                            <MenuItem onClick={() => onDelete(aquariumComment.id)}>削除する</MenuItem>
+                          </MenuList>
+                        </Box>
+                      ) : null}
+                    </Menu>
+                  </Box>
+                </Box>
+                <Text fontSize="md" whiteSpace={'pre-wrap'}>
+                  {aquariumComment.body}
+                </Text>
+                <Divider borderColor="gray.400" pt={4} />
+              </>
+            ))}
+          </Box>
+        </VStack>
+      ) : (
+        <Center>
+          <Text fontSize="xl" py={12}>
+            まだコメントはありません。
+          </Text>
+        </Center>
+      )}
     </>
   );
 }

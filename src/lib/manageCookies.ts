@@ -2,10 +2,15 @@ import nookies, { setCookie, destroyCookie } from 'nookies';
 
 type UserInfo = {
   avatar: string | null;
+  id: number;
   name: string;
 };
 
 export const setUserInfoCookies = (userInfo: UserInfo) => {
+  setCookie(null, 'id', String(userInfo.id), {
+    maxAge: 30 * 24 * 60 * 60,
+    path: '/',
+  });
   setCookie(null, 'name', userInfo.name, {
     maxAge: 30 * 24 * 60 * 60,
     path: '/',

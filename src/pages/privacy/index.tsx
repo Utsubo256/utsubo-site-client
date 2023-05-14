@@ -12,7 +12,7 @@ export default function Privacy() {
         <Text fontSize="3xl">プライバシーポリシー</Text>
       </Center>
       <Center>
-        <Box w={{ lg: '55%', md: '70%', sm: '90%' }}>
+        <Box w={{ base: '85%', lg: '55%', md: '70%' }}>
           <Divider borderColor="black" />
           <Text py={8}>
             うつぼさいとの管理者（以下、「管理者といいます。」）は、本ウェブサイト上で提供するサービス（以下「本サービス」といいます。）における、ユーザーについての個人情報を含む利用者情報の取扱いについて、以下のとおりプライバシーポリシーを定めます。

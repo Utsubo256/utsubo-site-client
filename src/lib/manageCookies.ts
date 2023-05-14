@@ -2,7 +2,7 @@ import nookies, { setCookie, destroyCookie } from 'nookies';
 
 type UserInfo = {
   avatar: string | null;
-  id: string;
+  id: number;
   name: string;
 };
 

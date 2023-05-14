@@ -95,7 +95,7 @@ export default function AquariumDetail() {
   const [aquariumCommentInput, setAquariumCommentInput] = useState<AquariumCommentInput>({
     body: '',
   });
-  const [aquariumComments, setAquariumComments] = useState<AquariumComments>([]);
+  const [aquariumComments, setAquariumComments] = useState<AquariumComments[]>([]);
 
   function onSubmit(e: React.SyntheticEvent) {
     e.preventDefault();

@@ -216,7 +216,7 @@ export default function MorayDetail() {
           <VStack pb={4}>
             <Box display="flex" w={{ base: '80%', lg: '50%', md: '70%' }}>
               <HStack>
-                <Avatar size={'md'} src={userInfo.avatar} />
+                <Avatar size={'md'} src={userInfo.avatar ?? undefined} />
                 <Text fontSize="md">{userInfo.name}</Text>
               </HStack>
             </Box>
@@ -284,7 +284,7 @@ export default function MorayDetail() {
                   <Box display="flex" justifyContent="space-between">
                     <HStack spacing={2}>
                       {morayComment.user.avatar ? (
-                        <Avatar size={'md'} src={morayComment.user.avatar} />
+                        <Avatar size={'md'} src={morayComment.user.avatar ?? undefined} />
                       ) : (
                         <Avatar size={'md'} src="/default-user-icon.png" />
                       )}

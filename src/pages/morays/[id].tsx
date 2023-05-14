@@ -18,9 +18,9 @@ import {
   Text,
   Textarea,
   VStack,
-  Wrap,
-  WrapItem,
   Icon,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { parseISO } from 'date-fns';
@@ -157,57 +157,63 @@ export default function MorayDetail() {
       <Center py="25px">
         <Text fontSize="3xl">{morayDetail.name_ja}</Text>
       </Center>
-      <VStack>
-        <Image alt="moray_image" borderRadius="full" boxSize="200px" src={`/moray_image/${morayDetail.avatar}`} />
-        <Box pt="25px">
-          <Text fontSize={'xl'}>{`英名　: ${morayDetail.name_en ?? '???'}`}</Text>
-          <Text fontSize={'xl'}>{`学名　: ${morayDetail.name_academic ?? '???'}`}</Text>
-          {/* <Text fontSize={'xl'}>分布: {morayDetail.distribution}</Text> */}
-          <Text fontSize={'xl'}>{`最大長: ${morayDetail.max_length_str ?? '???cm'}`}</Text>
+      <Center>
+        <Box w={{ base: '85%', lg: '100%', md: '85%' }}>
+          <VStack>
+            <Image alt="moray_image" borderRadius="full" boxSize="200px" src={`/moray_image/${morayDetail.avatar}`} />
+            <Box pt="25px">
+              <Text fontSize={'xl'}>{`英名　: ${morayDetail.name_en ?? '???'}`}</Text>
+              <Text fontSize={'xl'}>{`学名　: ${morayDetail.name_academic ?? '???'}`}</Text>
+              {/* <Text fontSize={'xl'}>分布: {morayDetail.distribution}</Text> */}
+              <Text fontSize={'xl'}>{`最大長: ${morayDetail.max_length_str ?? '???cm'}`}</Text>
+            </Box>
+            <VStack pt="20px" w={{ base: '70%', lg: '35%', md: '45%' }}>
+              <Text fontSize={'2xl'}>ひとことメモ</Text>
+              <Text fontSize={'xl'}>{morayDetail.description ?? '調査中です！しばらくお待ちください。'}</Text>
+            </VStack>
+          </VStack>
+          <VStack py="25px" spacing={0}>
+            <Text fontSize="2xl">このウツボが観られる水族館</Text>
+            <Text color="red.500" fontSize="sm">
+              ※ご注意※
+            </Text>
+            <Text color="red.500" fontSize="sm">
+              展示されるウツボは通知無く変更される場合があります。
+            </Text>
+          </VStack>
         </Box>
-        <VStack pt="20px" w={{ base: '70%', lg: '35%', md: '45%' }}>
-          <Text fontSize={'2xl'}>ひとことメモ</Text>
-          <Text fontSize={'xl'}>{morayDetail.description ?? '調査中です！しばらくお待ちください。'}</Text>
-        </VStack>
-      </VStack>
-      <VStack py="25px" spacing={0}>
-        <Text fontSize="2xl">このウツボが観られる水族館</Text>
-        <Text color="red.500" fontSize="sm">
-          ※ご注意※
-        </Text>
-        <Text color="red.500" fontSize="sm">
-          展示されるウツボは通知無く変更される場合があります。
-        </Text>
-      </VStack>
-      <Wrap justify="center" pb={8} spacing={8}>
-        {morayDetail.aquaria.map((aquarium) => (
-          <WrapItem key={aquarium.id} mx="auto">
-            <LinkBox
-              _hover={{ cursor: 'pointer', opacity: 0.8 }}
-              bg="whiteAlpha.800"
-              borderRadius="30px"
-              h="250px"
-              rounded="lg"
-              shadow="lg"
-              w="300px"
-            >
-              <Stack spacing={1} textAlign="center">
-                <Image
-                  alt={aquarium.name}
-                  m="auto"
-                  pb="8px"
-                  roundedTop="lg"
-                  src={`/aquarium_image/${aquarium.image}`}
-                />
-                <LinkOverlay as={NextLink} fontSize="lg" fontWeight="bold" href={`/aquaria/${aquarium.id}`}>
-                  {aquarium.name}
-                </LinkOverlay>
-                <Text>{aquarium.address_city}</Text>
-              </Stack>
-            </LinkBox>
-          </WrapItem>
-        ))}
-      </Wrap>
+      </Center>
+      <Box m="auto" pb={8} w="90%">
+        <Grid gap={8} justifyContent="center" templateColumns="repeat(auto-fit, 300px)">
+          {morayDetail.aquaria.map((aquarium) => (
+            <GridItem key={aquarium.id}>
+              <LinkBox
+                _hover={{ cursor: 'pointer', opacity: 0.8 }}
+                bg="whiteAlpha.800"
+                borderRadius="30px"
+                h="250px"
+                rounded="lg"
+                shadow="lg"
+                w="300px"
+              >
+                <Stack spacing={1} textAlign="center">
+                  <Image
+                    alt={aquarium.name}
+                    m="auto"
+                    pb="8px"
+                    roundedTop="lg"
+                    src={`/aquarium_image/${aquarium.image}`}
+                  />
+                  <LinkOverlay as={NextLink} fontSize="lg" fontWeight="bold" href={`/aquaria/${aquarium.id}`}>
+                    {aquarium.name}
+                  </LinkOverlay>
+                  <Text>{aquarium.address_city}</Text>
+                </Stack>
+              </LinkBox>
+            </GridItem>
+          ))}
+        </Grid>
+      </Box>
       <VStack py="25px">
         <Text fontSize="2xl">コメント</Text>
       </VStack>

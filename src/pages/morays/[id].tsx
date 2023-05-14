@@ -23,7 +23,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { format, parseISO } from 'date-fns';
+import { parseISO } from 'date-fns';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import ja from 'date-fns/locale/ja';
 import Head from 'next/head';
@@ -144,11 +144,6 @@ export default function MorayDetail() {
         .then((res) => setMorayComments(res.data));
     }
   }, [id, router]);
-
-  function formatDatetime(datetime: string) {
-    const formattedDatetime = format(parseISO(datetime), 'yyyy年MM月dd日 hh:mm', { locale: ja });
-    return formattedDatetime;
-  }
 
   function elapsedTimeFromNow(datetime: string) {
     return formatDistanceToNow(parseISO(datetime), { locale: ja });

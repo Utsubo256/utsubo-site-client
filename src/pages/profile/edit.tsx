@@ -110,60 +110,58 @@ export default function ProfileEdit() {
       <Center>
         {/* <form onSubmit={handleSubmit(onSubmit)}> */}
         <form onSubmit={onSubmit}>
-          <Box w="lg">
-            <FormControl>
-              <FormLabel fontSize={'xl'}>アイコン画像</FormLabel>
-              <HStack pt={3}>
-                {profile?.avatar ? (
-                  <Avatar size={'xl'} src={currentUser?.photoURL ?? undefined} />
-                ) : (
-                  <Avatar size={'xl'} src="/default-user-icon.png" />
-                )}
-                {!currentUser?.isAnonymous && !loading && (
-                  <RadioGroup
-                    defaultValue={userInfo.avatar ? 'google-icon' : 'default'}
-                    onChange={(value) => handleChangeAvatar(value)}
-                    px={10}
-                  >
-                    <Box>
-                      <Radio bg="whiteAlpha.900" value="default">
-                        デフォルト画像を使用する
-                      </Radio>
-                      <Radio bg="whiteAlpha.900" value="google-icon">
-                        Googleアイコンを使用する
-                      </Radio>
-                    </Box>
-                  </RadioGroup>
-                )}
-              </HStack>
-            </FormControl>
-            {/* <FormControl id="name" isInvalid={!!errors.profile?.name}> */}
-            <FormControl id="name">
-              <FormLabel fontSize={'xl'} htmlFor="name" mt={5}>
-                ユーザー名
-              </FormLabel>
-              <Input
-                bg="whiteAlpha.900"
-                // error={errors.profile?.name}
-                id="name"
-                onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                type="text"
-                value={profile.name}
-                // {...register('profile.name')}
-              />
-              {/* <FormErrorMessage>{errors.profile?.name.message && errors.profile?.name.message}</FormErrorMessage> */}
-            </FormControl>
-            <Center mt={8}>
-              <HStack spacing={100}>
-                <Button bg="whiteAlpha.900" onClick={onCancel} w="100px">
-                  キャンセル
-                </Button>
-                <Button bg="blue.500" color="whiteAlpha.900" type="submit" w="100px">
-                  更新する
-                </Button>
-              </HStack>
-            </Center>
-          </Box>
+          <FormControl>
+            <FormLabel fontSize={'xl'}>アイコン画像</FormLabel>
+            <HStack pt={3}>
+              {profile?.avatar ? (
+                <Avatar size={'xl'} src={currentUser?.photoURL ?? undefined} />
+              ) : (
+                <Avatar size={'xl'} src="/default-user-icon.png" />
+              )}
+              {!currentUser?.isAnonymous && !loading && (
+                <RadioGroup
+                  defaultValue={userInfo.avatar ? 'google-icon' : 'default'}
+                  onChange={(value) => handleChangeAvatar(value)}
+                  px={{ base: 6, sm: 10 }}
+                >
+                  <Box display="flex" flexDir="column" justifyContent="flex-start">
+                    <Radio bg="whiteAlpha.900" value="default">
+                      <Text fontSize={{ base: 'sm', lg: 'md', md: 'md', sm: 'md' }}>デフォルト画像を使用する</Text>
+                    </Radio>
+                    <Radio bg="whiteAlpha.900" value="google-icon">
+                      <Text fontSize={{ base: 'sm', lg: 'md', md: 'md', sm: 'md' }}>Googleアイコンを使用する</Text>
+                    </Radio>
+                  </Box>
+                </RadioGroup>
+              )}
+            </HStack>
+          </FormControl>
+          {/* <FormControl id="name" isInvalid={!!errors.profile?.name}> */}
+          <FormControl id="name">
+            <FormLabel fontSize={'xl'} htmlFor="name" mt={5}>
+              ユーザー名
+            </FormLabel>
+            <Input
+              bg="whiteAlpha.900"
+              // error={errors.profile?.name}
+              id="name"
+              onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+              type="text"
+              value={profile.name}
+              // {...register('profile.name')}
+            />
+            {/* <FormErrorMessage>{errors.profile?.name.message && errors.profile?.name.message}</FormErrorMessage> */}
+          </FormControl>
+          <Center mt={8}>
+            <HStack spacing={100}>
+              <Button bg="whiteAlpha.900" onClick={onCancel} w="100px">
+                キャンセル
+              </Button>
+              <Button _hover={{ bg: 'blue.300' }} bg="blue.500" color="whiteAlpha.900" type="submit" w="100px">
+                更新する
+              </Button>
+            </HStack>
+          </Center>
         </form>
       </Center>
     </>

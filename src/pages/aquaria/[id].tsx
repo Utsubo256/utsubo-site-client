@@ -93,6 +93,7 @@ export default function AquariumDetail() {
     name: '',
     region: '',
     site_url: '',
+    video_url: '',
   });
 
   const [aquariumCommentInput, setAquariumCommentInput] = useState<AquariumCommentInput>({

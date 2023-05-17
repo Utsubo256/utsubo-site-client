@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Center, Image, LinkBox, LinkOverlay, Stack, Text, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Center, Grid, GridItem, Image, LinkBox, LinkOverlay, Stack, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -29,36 +29,38 @@ export default function Morays() {
       <Center py="25px">
         <Text fontSize="3xl">ウツボ一覧</Text>
       </Center>
-      <Wrap justify="center" pb={8} spacing={8}>
-        {morays.map((moray) => (
-          <WrapItem key={moray.id} mx="auto">
-            <LinkBox
-              _hover={{ cursor: 'pointer', opacity: 0.8 }}
-              bg="whiteAlpha.800"
-              borderRadius="30px"
-              h="300px"
-              p={4}
-              shadow="lg"
-              w="230px"
-            >
-              <Stack spacing={1} textAlign="center">
-                <Image
-                  alt="moray_image"
-                  borderRadius="full"
-                  boxSize="160px"
-                  m="auto"
-                  src={`/moray_image/${moray.avatar}`}
-                />
-                <LinkOverlay as={NextLink} fontSize="xl" fontWeight="bold" href={`/morays/${moray.id}`}>
-                  {moray.name_ja}
-                </LinkOverlay>
-                <Text>{moray.name_en}</Text>
-                <Text>最大長: {moray.max_length_str}</Text>
-              </Stack>
-            </LinkBox>
-          </WrapItem>
-        ))}
-      </Wrap>
+      <Box m="auto" pb={8} w="90%">
+        <Grid gap={8} justifyContent="center" templateColumns="repeat(auto-fit, 230px)">
+          {morays.map((moray) => (
+            <GridItem key={moray.id}>
+              <LinkBox
+                _hover={{ cursor: 'pointer', opacity: 0.8 }}
+                bg="whiteAlpha.800"
+                borderRadius="30px"
+                h="300px"
+                p={4}
+                shadow="lg"
+                w="230px"
+              >
+                <Stack spacing={1} textAlign="center">
+                  <Image
+                    alt="moray_image"
+                    borderRadius="full"
+                    boxSize="160px"
+                    m="auto"
+                    src={`/moray_image/${moray.avatar}`}
+                  />
+                  <LinkOverlay as={NextLink} fontSize="xl" fontWeight="bold" href={`/morays/${moray.id}`}>
+                    {moray.name_ja}
+                  </LinkOverlay>
+                  <Text>{moray.name_en ?? '?'}</Text>
+                  <Text>最大長: {moray.max_length_str ?? '? cm'}</Text>
+                </Stack>
+              </LinkBox>
+            </GridItem>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 }

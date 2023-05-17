@@ -18,6 +18,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { BiLogOut } from 'react-icons/bi';
 
 import { useAuthContext } from '@/context/AuthContext';
@@ -29,8 +30,14 @@ const navbarLinks = [
 ];
 
 export default function Header() {
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { currentUser, loading, logout, userInfo } = useAuthContext();
+
+  function handleLink(link: string) {
+    router.push(link);
+    onClose();
+  }
 
   return (
     <>
@@ -104,21 +111,21 @@ export default function Header() {
           <Box display={{ md: 'none' }} pb={4}>
             <Stack as={'nav'} spacing={4}>
               {navbarLinks.map((link) => (
-                <Link
+                <Button
                   _hover={{
                     bg: 'blue.300',
                     textDecoration: 'none',
                   }}
-                  as={NextLink}
+                  bg="blue.500"
                   color={'whiteAlpha.900'}
-                  href={link.url}
                   key={link.name} // key propsはイテレータ内でどのアイテムかをReactが認識するために使われる
+                  onClick={() => handleLink(link.url)}
                   px={2}
                   py={1}
                   rounded={'md'}
                 >
                   {link.name}
-                </Link>
+                </Button>
               ))}
             </Stack>
           </Box>

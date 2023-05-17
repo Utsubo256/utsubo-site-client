@@ -11,7 +11,7 @@ export default function Terms() {
         <Text fontSize="3xl">利用規約</Text>
       </Center>
       <Center>
-        <Box w={{ lg: '55%', md: '70%', sm: '90%' }}>
+        <Box w={{ base: '85%', lg: '55%', md: '70%' }}>
           <Divider borderColor="black" />
           <Text py={8}>
             本利用規約（以下「本規約」といいます。）には、本サービスの提供条件及び本サイトの管理者（以下「管理者」といいます。）と登録ユーザーの皆様との間の権利義務関係が定められています。本サービスの利用に際しては、本規約の全文をお読みいただいたうえで、本規約に同意いただく必要があります。

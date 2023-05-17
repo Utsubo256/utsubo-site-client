@@ -53,8 +53,8 @@ export default function Morays() {
                   <LinkOverlay as={NextLink} fontSize="xl" fontWeight="bold" href={`/morays/${moray.id}`}>
                     {moray.name_ja}
                   </LinkOverlay>
-                  <Text>{moray.name_en}</Text>
-                  <Text>最大長: {moray.max_length_str}</Text>
+                  <Text>{moray.name_en ?? '?'}</Text>
+                  <Text>最大長: {moray.max_length_str ?? '? cm'}</Text>
                 </Stack>
               </LinkBox>
             </GridItem>

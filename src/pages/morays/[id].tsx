@@ -162,10 +162,10 @@ export default function MorayDetail() {
           <VStack>
             <Image alt="moray_image" borderRadius="full" boxSize="200px" src={`/moray_image/${morayDetail.avatar}`} />
             <Box pt="25px">
-              <Text fontSize={'xl'}>{`英名　: ${morayDetail.name_en ?? '???'}`}</Text>
-              <Text fontSize={'xl'}>{`学名　: ${morayDetail.name_academic ?? '???'}`}</Text>
+              <Text fontSize={'xl'}>{`英名　: ${morayDetail.name_en ?? '?'}`}</Text>
+              <Text fontSize={'xl'}>{`学名　: ${morayDetail.name_academic ?? '?'}`}</Text>
               {/* <Text fontSize={'xl'}>分布: {morayDetail.distribution}</Text> */}
-              <Text fontSize={'xl'}>{`最大長: ${morayDetail.max_length_str ?? '???cm'}`}</Text>
+              <Text fontSize={'xl'}>{`最大長: ${morayDetail.max_length_str ?? '? cm'}`}</Text>
             </Box>
             <VStack pt="20px" w={{ base: '70%', lg: '35%', md: '45%' }}>
               <Text fontSize={'2xl'}>ひとことメモ</Text>

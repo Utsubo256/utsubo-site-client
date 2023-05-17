@@ -57,6 +57,7 @@ type Aquarium = {
   name: string;
   region: string;
   site_url: string;
+  video_url: string;
 };
 
 type AquariumComments = {

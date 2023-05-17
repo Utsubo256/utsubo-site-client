@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 
 import {
+  AspectRatio,
   Avatar,
   Box,
   Button,
   Center,
   Divider,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -55,6 +57,7 @@ type Aquarium = {
   name: string;
   region: string;
   site_url: string;
+  video_url: string;
 };
 
 type AquariumComments = {
@@ -90,6 +93,7 @@ export default function AquariumDetail() {
     name: '',
     region: '',
     site_url: '',
+    video_url: '',
   });
 
   const [aquariumCommentInput, setAquariumCommentInput] = useState<AquariumCommentInput>({
@@ -196,6 +200,20 @@ export default function AquariumDetail() {
               <Text fontSize={'xl'}>{aquariumDetail.description ?? '調査中です！しばらくお待ちください。'}</Text>
             </VStack>
           </VStack>
+          {aquariumDetail.video_url ? (
+            <>
+              <VStack>
+                <VStack pt="20px" w={{ base: '70%', lg: '35%', md: '45%' }}>
+                  <Text fontSize={'2xl'}>ウツボ動画</Text>
+                </VStack>
+              </VStack>
+              <Flex justifyContent="center">
+                <AspectRatio ratio={16 / 9} w={{ base: '100%', lg: '50%', md: '80%' }}>
+                  <iframe allowFullScreen src={`https://www.youtube-nocookie.com/embed/${aquariumDetail.video_url}`} />
+                </AspectRatio>
+              </Flex>
+            </>
+          ) : null}
           <VStack py="25px" spacing={0}>
             <Text fontSize="2xl">この水族館で観られるウツボ</Text>
             <Text color="red.500" fontSize="sm">

@@ -21,6 +21,8 @@ import {
   Icon,
   Grid,
   GridItem,
+  Flex,
+  AspectRatio,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { parseISO } from 'date-fns';
@@ -172,6 +174,20 @@ export default function MorayDetail() {
               <Text fontSize={'xl'}>{morayDetail.description ?? '調査中です！しばらくお待ちください。'}</Text>
             </VStack>
           </VStack>
+          {morayDetail.video_url ? (
+            <>
+              <VStack>
+                <VStack pt="20px" w={{ base: '70%', lg: '35%', md: '45%' }}>
+                  <Text fontSize={'2xl'}>ウツボ動画</Text>
+                </VStack>
+              </VStack>
+              <Flex justifyContent="center">
+                <AspectRatio ratio={16 / 9} w={{ base: '100%', lg: '50%', md: '80%' }}>
+                  <iframe allowFullScreen src={`https://www.youtube-nocookie.com/embed/${morayDetail.video_url}`} />
+                </AspectRatio>
+              </Flex>
+            </>
+          ) : null}
           <VStack py="25px" spacing={0}>
             <Text fontSize="2xl">このウツボが観られる水族館</Text>
             <Text color="red.500" fontSize="sm">

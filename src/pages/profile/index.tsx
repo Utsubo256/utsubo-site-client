@@ -10,16 +10,16 @@ import { useAuthContext } from '@/context/AuthContext';
 
 type Profile = {
   avatar: string | null;
-  id: number;
   name: string;
+  uid: string;
 };
 
 export default function Profile() {
   const router = useRouter();
   const [profile, setProfile] = useState<Profile>({
     avatar: '',
-    id: 0,
     name: '',
+    uid: '',
   });
 
   const { currentUser, loading } = useAuthContext();

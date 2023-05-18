@@ -93,7 +93,7 @@ export default function Header() {
                       プロフィール編集
                     </MenuItem>
                     <MenuDivider />
-                    <MenuItem icon={<BiLogOut />} onClick={() => logout()}>
+                    <MenuItem icon={<BiLogOut />} onClick={logout}>
                       ログアウト
                     </MenuItem>
                   </MenuList>

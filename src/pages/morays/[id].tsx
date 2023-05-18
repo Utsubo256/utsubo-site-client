@@ -64,8 +64,8 @@ type MorayComments = {
   image: string | null;
   user: {
     avatar: string | null;
-    id: number;
     name: string;
+    uid: string;
   };
 };
 
@@ -96,6 +96,8 @@ export default function MorayDetail() {
     body: '',
   });
   const [morayComments, setMorayComments] = useState<MorayComments[]>([]);
+
+  const [isAuthor, setIsAuthor] = useState(false);
 
   function onSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -146,6 +148,12 @@ export default function MorayDetail() {
         .then((res) => setMorayComments(res.data));
     }
   }, [id, router]);
+
+  useEffect(() => {
+    if (!loading && currentUser && currentUser.uid === userInfo.uid) {
+      setIsAuthor(true);
+    }
+  }, [currentUser, loading, userInfo.uid]);
 
   function elapsedTimeFromNow(datetime: string) {
     return formatDistanceToNow(parseISO(datetime), { locale: ja });
@@ -314,7 +322,7 @@ export default function MorayDetail() {
                       <Text fontSize="xs">{elapsedTimeFromNow(morayComment.created_at)}</Text>
                     </HStack>
                     <Menu>
-                      {morayComment.user.id === Number(userInfo.id) ? (
+                      {isAuthor && morayComment.user.uid === userInfo.uid && (
                         <Box>
                           <MenuButton>
                             <Icon as={BsThreeDots} boxSize="20px" />
@@ -324,7 +332,7 @@ export default function MorayDetail() {
                             <MenuItem onClick={() => onDelete(morayComment.id)}>削除する</MenuItem>
                           </MenuList>
                         </Box>
-                      ) : null}
+                      )}
                     </Menu>
                   </Box>
                 </Box>

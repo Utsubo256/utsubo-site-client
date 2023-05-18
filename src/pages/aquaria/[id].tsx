@@ -67,8 +67,8 @@ type AquariumComments = {
   image: string | null;
   user: {
     avatar: string | null;
-    id: number;
     name: string;
+    uid: string;
   };
 };
 
@@ -100,6 +100,8 @@ export default function AquariumDetail() {
     body: '',
   });
   const [aquariumComments, setAquariumComments] = useState<AquariumComments[]>([]);
+
+  const [isAuthor, setIsAuthor] = useState(false);
 
   function onSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
@@ -151,6 +153,12 @@ export default function AquariumDetail() {
         .then((res) => setAquariumComments(res.data));
     }
   }, [id, router]);
+
+  useEffect(() => {
+    if (!loading && currentUser && currentUser.uid === userInfo.uid) {
+      setIsAuthor(true);
+    }
+  }, [currentUser, loading, userInfo.uid]);
 
   function elapsedTimeFromNow(datetime: string) {
     return formatDistanceToNow(parseISO(datetime), { locale: ja });
@@ -341,7 +349,7 @@ export default function AquariumDetail() {
                       <Text fontSize="xs">{elapsedTimeFromNow(aquariumComment.created_at)}</Text>
                     </HStack>
                     <Menu>
-                      {aquariumComment.user.id === Number(userInfo.id) ? (
+                      {isAuthor && aquariumComment.user.uid === userInfo.uid && (
                         <Box>
                           <MenuButton>
                             <Icon as={BsThreeDots} boxSize="20px" />
@@ -351,7 +359,7 @@ export default function AquariumDetail() {
                             <MenuItem onClick={() => onDelete(aquariumComment.id)}>削除する</MenuItem>
                           </MenuList>
                         </Box>
-                      ) : null}
+                      )}
                     </Menu>
                   </Box>
                 </Box>

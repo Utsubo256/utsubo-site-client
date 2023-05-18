@@ -2,12 +2,12 @@ import nookies, { setCookie, destroyCookie } from 'nookies';
 
 type UserInfo = {
   avatar: string | null;
-  id: number;
   name: string;
+  uid: string;
 };
 
 export const setUserInfoCookies = (userInfo: UserInfo) => {
-  setCookie(null, 'id', String(userInfo.id), {
+  setCookie(null, 'uid', userInfo.uid, {
     maxAge: 30 * 24 * 60 * 60,
     path: '/',
   });
@@ -25,4 +25,5 @@ export const clearUserInfoCookies = () => {
   nookies.destroy(null, 'token');
   destroyCookie(null, 'name');
   destroyCookie(null, 'avatar');
+  destroyCookie(null, 'uid');
 };

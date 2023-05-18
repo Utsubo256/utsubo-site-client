@@ -66,7 +66,6 @@ type MorayComments = {
     avatar: string | null;
     name: string;
     uid: string;
-    uid: string;
   };
 };
 

@@ -10,8 +10,8 @@ import { useAuthContext } from '@/context/AuthContext';
 
 type Profile = {
   avatar: string | null;
-  id: number;
   name: string;
+  uid: string;
 };
 
 export default function Profile() {

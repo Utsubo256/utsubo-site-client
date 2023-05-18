@@ -67,8 +67,8 @@ type AquariumComments = {
   image: string | null;
   user: {
     avatar: string | null;
-    id: number;
     name: string;
+    uid: string;
   };
 };
 

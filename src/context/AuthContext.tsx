@@ -8,8 +8,8 @@ import type { User } from 'firebase/auth';
 
 type UserInfo = {
   avatar: string | null;
-  id: number;
   name: string;
+  uid: string;
 };
 
 type AuthContextType = {
@@ -33,8 +33,8 @@ export function AuthContextProvider({ children }: Props) {
   const { currentUser, loading, loginWithFirebase, logout } = useFirebaseAuth();
   const [userInfo, setUserInfo] = useState({
     avatar: cookies.avatar,
-    id: Number(cookies.id),
     name: cookies.name,
+    uid: cookies.uid,
   });
 
   const updateUserInfo = (newUserInfo: UserInfo) => {

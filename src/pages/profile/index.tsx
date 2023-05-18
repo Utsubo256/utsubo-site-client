@@ -18,8 +18,8 @@ export default function Profile() {
   const router = useRouter();
   const [profile, setProfile] = useState<Profile>({
     avatar: '',
-    id: 0,
     name: '',
+    uid: '',
   });
 
   const { currentUser, loading } = useAuthContext();

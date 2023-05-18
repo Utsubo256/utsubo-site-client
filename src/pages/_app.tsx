@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
+import * as gtag from 'src/lib/gtag';
 
 import Layout from '@/components/Layout/Layout';
 import { AuthContextProvider } from '@/context/AuthContext';
